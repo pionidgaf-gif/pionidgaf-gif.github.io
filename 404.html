@@ -127,7 +127,39 @@ details.q summary::-webkit-details-marker{display:none}
 .num{white-space:nowrap}
 .stats{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
 .case .stats{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:18px 24px}.case .num{font-size:clamp(22px,2.3vw,28px)}
-@media (min-width:861px){#services .grid{grid-template-columns:repeat(6,1fr)}#services .grid .card:nth-child(-n+3){grid-column:span 2}#services .grid .card:nth-child(n+4){grid-column:span 3}}
+@media (min-width:861px){#services .grid{grid-template-columns:repeat(2,1fr)}}
+/* offer + form */
+.h1-offer{font-size:clamp(30px,4.6vw,54px)}
+.offer,.contact-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);gap:32px;align-items:start}
+.offer{border-top:5px solid var(--saf)}
+.ticks{list-style:none;padding:0;margin:16px 0}
+.ticks li{padding:6px 0 6px 30px;position:relative}
+.ticks li::before{content:"✓";position:absolute;left:0;top:6px;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:700}
+.lead-form{display:grid;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.lead-form label{display:grid;gap:4px;font-size:14px;font-weight:600;color:var(--muted)}
+.lead-form input,.calc input{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 12px;min-height:46px;width:100%}
+.lead-form input:focus,.calc input:focus{outline:2px solid var(--cobalt);outline-offset:0}
+.lead-form .btn{border:0;cursor:pointer;font:inherit;font-weight:700}
+.form-msg{margin:0;font-size:14px;color:var(--teal);min-height:1em}
+#realestate .lead-form{color:var(--ink)}
+/* roi */
+.calc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.3fr);gap:16px;align-items:end;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.calc label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--muted)}
+.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* smm teaser, brands */
+.smm-teaser{display:flex;gap:24px;align-items:center;justify-content:space-between}
+.smm-teaser p{margin:0}.smm-teaser .btn{flex-shrink:0;white-space:nowrap}
+.chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:500}
+.bgroup.main .chips li{font-family:Unbounded,sans-serif;font-size:14px;border-color:color-mix(in srgb,var(--cobalt) 35%,var(--line))}
+.bgroup h3{margin-top:20px}
+.more-brands{margin-top:20px}
+.more-brands summary{cursor:pointer;font-weight:700;color:var(--cobalt)}
+/* click-to-load reels */
+.reel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;height:540px;border:0;border-radius:10px;cursor:pointer;color:#fff;font:600 16px Onest,sans-serif;background:linear-gradient(160deg,var(--cobalt-2),#0b1a5c 55%,#0a4f5c)}
+.reel small{opacity:.75;font-size:13px;padding:0 12px;text-align:center}
+.reel-play{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center;font-size:24px}
+@media (max-width:860px){.offer,.contact-grid{grid-template-columns:1fr}.calc{grid-template-columns:1fr}.smm-teaser{flex-direction:column;align-items:flex-start}}
 .quote{margin:0 0 20px;padding:20px 24px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:var(--r);box-shadow:var(--shadow)}
 .quote blockquote{margin:0;font-size:1.12rem;line-height:1.55;font-weight:500}
 .quote figcaption{margin-top:10px;color:var(--muted);font-size:14px}
