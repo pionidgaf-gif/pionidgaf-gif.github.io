@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CRM для автосервиса: как возвращать клиентов к следующему ТО | Musaev Marketing</title>
-<meta name="description" content="Что такое CRM для автосервиса, какие данные о машине и клиенте записывать, как настроить напоминания о ТО и не терять заявки из Instagram и Telegram.">
+<meta name="description" content="CRM для автосервиса: какие данные о машине и клиенте записывать, как настроить напоминания о ТО по пробегу и не терять заявки из Instagram и Telegram.">
 <link rel="canonical" href="https://musaevmarketing.uz/ru/blog/crm-dlya-avtoservisa/">
-<meta property="og:title" content="CRM для автосервиса: как возвращать клиентов к следующему ТО | Musaev Marketing"><meta property="og:description" content="Что такое CRM для автосервиса, какие данные о машине и клиенте записывать, как настроить напоминания о ТО и не терять заявки из Instagram и Telegram."><meta property="og:type" content="article"><meta property="og:url" content="https://musaevmarketing.uz/ru/blog/crm-dlya-avtoservisa/">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><meta property="og:image" content="https://musaevmarketing.uz/assets/og.png"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="CRM для автосервиса: как возвращать клиентов к следующему ТО | Musaev Marketing"><meta property="og:description" content="CRM для автосервиса: какие данные о машине и клиенте записывать, как настроить напоминания о ТО по пробегу и не терять заявки из Instagram и Telegram."><meta property="og:type" content="article"><meta property="og:url" content="https://musaevmarketing.uz/ru/blog/crm-dlya-avtoservisa/">
+<link rel="icon" href="/assets/favicon-64.png" type="image/png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><meta property="og:image" content="https://musaevmarketing.uz/assets/og.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
-<style>:root{--ink:#111833;--muted:#4a5272;--bg:#F6F7FB;--card:#fff;--line:#dfe3ee;--cobalt:#2340C2;--cobalt-2:#1a2f94;--teal:#0E9C98;--mag:#C2186B;--saf:#E8A317;--btn-ink:#fff;--shadow:0 1px 2px rgba(17,24,51,.05),0 8px 24px rgba(17,24,51,.06);--r:16px}
-@media (prefers-color-scheme:dark){:root{--ink:#eef0f8;--muted:#a9b0c8;--bg:#0b1022;--card:#141b35;--line:#273055;--cobalt:#7b90ff;--cobalt-2:#2340C2;--teal:#3cc7c2;--btn-ink:#0b1022;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25)}}
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@400;500;700&display=swap" rel="stylesheet">
+<style>:root{--ink:#111111;--muted:#55534e;--bg:#F6F4EF;--card:#fff;--line:#e3dfd6;--cobalt:#111111;--cobalt-2:#0d0d0d;--teal:#9A7B2F;--mag:#6b6458;--saf:#C9A44C;--btn-ink:#fff;--shadow:0 1px 2px rgba(17,24,51,.05),0 8px 24px rgba(17,24,51,.06);--r:16px}
+@media (prefers-color-scheme:dark){:root{--ink:#f2efe8;--muted:#b3ada1;--bg:#0d0d0d;--card:#171716;--line:#2c2b28;--cobalt:#f2efe8;--cobalt-2:#000;--teal:#D4B262;--mag:#8a8476;--saf:#D4B262;--btn-ink:#0d0d0d;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25)}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Onest,system-ui,sans-serif;overflow-x:hidden}
@@ -22,8 +22,8 @@ a{color:var(--cobalt);text-underline-offset:3px}
 /* header */
 .top{position:sticky;top:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);z-index:20}
 .bar{display:flex;align-items:center;gap:20px;min-height:64px}
-.logo{display:flex;align-items:center;gap:10px;font:800 17px Unbounded,sans-serif;color:var(--ink);text-decoration:none;white-space:nowrap}
-.logo i{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--cobalt),var(--teal));color:#fff;font:800 13px Unbounded,sans-serif;font-style:normal}
+.logo{display:flex;align-items:center;gap:10px;font:800 17px Forum,Georgia,serif;color:var(--ink);text-decoration:none;white-space:nowrap}
+.logo .lm{height:32px;width:auto;display:block}.logo .lm-w{display:none}@media (prefers-color-scheme:dark){.logo .lm-b{display:none}.logo .lm-w{display:block}}.logo span{font:400 19px Forum,Georgia,serif;letter-spacing:.06em;text-transform:uppercase}
 .nav{display:flex;gap:18px;flex-wrap:wrap;flex:1;justify-content:center}
 .nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
 .nav a:hover,.nav a[aria-current]{color:var(--ink)}
@@ -40,7 +40,7 @@ a{color:var(--cobalt);text-underline-offset:3px}
 .menu nav a{padding:12px 14px;border-radius:10px;color:var(--ink);text-decoration:none;font-weight:500}
 .menu nav a:hover{background:var(--bg)}
 /* type */
-h1,h2,h3{font-family:Unbounded,sans-serif;line-height:1.18;margin:0 0 .6em;letter-spacing:-.01em}
+h1,h2,h3{font-family:Forum,Georgia,serif;line-height:1.18;margin:0 0 .6em;letter-spacing:-.01em}
 h1{font-size:clamp(34px,6.6vw,74px);font-weight:800;color:var(--cobalt)}
 h2{font-size:clamp(23px,3.4vw,34px);font-weight:600}
 h3{font-size:18px;font-weight:600}
@@ -50,9 +50,9 @@ section{padding:64px 0}
 .lead{font-size:clamp(18px,2.1vw,22px);max-width:720px;color:var(--muted)}
 /* hero */
 .hero{padding-top:72px;padding-bottom:48px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.9fr);gap:40px;align-items:center}
-.hero h1{background:linear-gradient(100deg,var(--cobalt) 30%,var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1{color:var(--ink)}
 .proof{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.proof::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--cobalt),var(--teal),var(--mag),var(--saf))}
+.proof::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--saf)}
 .proof h2{font-size:15px;font-family:Onest,sans-serif;font-weight:700;color:var(--muted);margin:4px 0 12px}
 .proof .stat{padding:12px 0;border-bottom:1px solid var(--line)}.proof .stat:last-of-type{border:0}
 .proof .num{font-size:clamp(22px,2.6vw,30px)}
@@ -62,7 +62,7 @@ section{padding:64px 0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:12px;background:var(--cobalt);color:var(--btn-ink);text-decoration:none;font-weight:700;transition:transform .15s,box-shadow .15s;box-shadow:0 6px 18px color-mix(in srgb,var(--cobalt) 30%,transparent)}
 .btn:hover{transform:translateY(-1px)}
 .btn.ghost{background:transparent;color:var(--cobalt);border:2px solid var(--cobalt);box-shadow:none}
-.atlas{height:12px;background:repeating-linear-gradient(90deg,var(--cobalt) 0 40px,var(--teal) 40px 70px,var(--mag) 70px 90px,var(--saf) 90px 104px,var(--cobalt) 104px 130px)}
+.atlas{height:1px;max-width:1120px;margin:0 auto;background:linear-gradient(90deg,transparent,var(--saf),transparent)}
 .observe p{font-size:clamp(19px,2.4vw,25px);max-width:840px;border-left:4px solid var(--saf);padding-left:20px;margin:0;line-height:1.5}
 /* cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
@@ -74,25 +74,25 @@ section{padding:64px 0}
 .card p{margin:.4em 0}
 .who{font-size:14px;color:var(--teal);font-weight:500}
 .band{background:var(--card);border-radius:24px;border:1px solid var(--line);padding:40px max(20px,3.5vw);margin:24px auto;box-shadow:var(--shadow)}
-.band.dark,#realestate{background:linear-gradient(135deg,var(--cobalt-2),#0b1a5c 60%,#0a4f5c);color:#eef0f8;border:0}
-#realestate h2{color:#fff}#realestate .btn{background:#fff;color:#1a2f94;box-shadow:none}
+.band.dark,#realestate{background:#0d0d0d;color:#eeeae0;border:0;border-top:4px solid #C9A44C}
+#realestate h2{color:#fff}#realestate .btn{background:#C9A44C;color:#0d0d0d;box-shadow:none}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px;margin:16px 0}
 .stat{display:flex;flex-direction:column}
-.num{font:800 clamp(24px,3vw,32px) Unbounded,sans-serif;color:var(--cobalt);line-height:1.15}
+.num{font:800 clamp(24px,3vw,32px) Forum,Georgia,serif;color:var(--cobalt);line-height:1.15}
 .muted{color:var(--muted)}.small{font-size:14px}.mt{margin-top:40px}
 .brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px}
 .bgroup p{margin:0;color:var(--muted)}
 .steps{list-style:none;padding:0;counter-reset:s;display:grid;gap:12px}
 .steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 18px 64px;position:relative}
-.steps li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--cobalt);color:var(--btn-ink);font:700 15px Unbounded,sans-serif}
-.price .amount{font:800 clamp(22px,2.6vw,26px) Unbounded,sans-serif;color:var(--cobalt);margin:.2em 0}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--cobalt);color:var(--btn-ink);font:700 15px Forum,Georgia,serif}
+.price .amount{font:800 clamp(22px,2.6vw,26px) Forum,Georgia,serif;color:var(--cobalt);margin:.2em 0}
 .timeline{list-style:none;padding:0;border-left:2px solid var(--line);margin-left:6px}
 .timeline li{padding:10px 0 10px 20px;position:relative}
 .timeline li::before{content:"";position:absolute;left:-7px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--teal)}
 .timeline time{font-weight:700;color:var(--teal);margin-right:8px}
 details.q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:10px 0}
 details.q summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
-details.q summary::after{content:"+";font:600 22px Unbounded,sans-serif;color:var(--cobalt);line-height:1}
+details.q summary::after{content:"+";font:600 22px Forum,Georgia,serif;color:var(--cobalt);line-height:1}
 details.q[open] summary::after{content:"–"}
 details.q summary::-webkit-details-marker{display:none}
 .contacts{font-size:clamp(17px,2.4vw,21px);font-weight:700}
@@ -102,7 +102,7 @@ details.q summary::-webkit-details-marker{display:none}
 /* developers + video */
 .devs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr));gap:10px;list-style:none;padding:0;margin:0}
 .devs li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.devs b{display:block;font-family:Unbounded,sans-serif;font-size:.9rem;line-height:1.25}
+.devs b{display:block;font-family:Forum,Georgia,serif;font-size:.9rem;line-height:1.25}
 .devs span{display:block;font-size:.85rem;opacity:.7;margin-top:4px}
 .slider{position:relative}
 .slides{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;scrollbar-width:thin;overscroll-behavior-x:contain}
@@ -161,7 +161,7 @@ details.q summary::-webkit-details-marker{display:none}
 .smm-teaser p{margin:0}.smm-teaser .btn{flex-shrink:0;white-space:nowrap}
 .chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
 .chips li{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:500}
-.bgroup.main .chips li{font-family:Unbounded,sans-serif;font-size:14px;border-color:color-mix(in srgb,var(--cobalt) 35%,var(--line))}
+.bgroup.main .chips li{font-family:Forum,Georgia,serif;font-size:14px;border-color:color-mix(in srgb,var(--cobalt) 35%,var(--line))}
 .bgroup h3{margin-top:20px}
 .more-brands{margin-top:20px}
 .more-brands summary{cursor:pointer;font-weight:700;color:var(--cobalt)}
@@ -179,7 +179,7 @@ details.q summary::-webkit-details-marker{display:none}
 .story-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:40px;align-items:start}
 .chap{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:28px 0;border-bottom:1px solid var(--line)}
 .chap:last-child{border:0}.chap h2{margin-top:0;font-size:clamp(1.3rem,2.4vw,1.7rem)}
-.chap-n{font:800 22px Unbounded,sans-serif;color:var(--cobalt);opacity:.55;padding-top:4px}
+.chap-n{font:800 22px Forum,Georgia,serif;color:var(--cobalt);opacity:.55;padding-top:4px}
 .miles{position:sticky;top:88px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow);margin-top:28px}
 .miles h2{font-size:1.1rem;margin:0 0 6px}.miles .timeline li{font-size:15px}.miles time{display:block;margin:0 0 2px}
 .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px}
@@ -197,22 +197,48 @@ details.q summary::-webkit-details-marker{display:none}
 .mbar .btn{flex:1;min-height:48px;padding:10px}.cta .btn{flex:1 1 100%}
 .slide{flex-basis:84%}.slide iframe{height:500px}.post p,.post li{font-size:17px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-</style><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CRM для автосервиса: как возвращать клиентов к следующему ТО", "description": "Что такое CRM для автосервиса, какие данные о машине и клиенте записывать, как настроить напоминания о ТО и не терять заявки из Instagram и Telegram.", "datePublished": "2026-11-11", "dateModified": "2026-11-11", "inLanguage": "ru", "mainEntityOfPage": "https://musaevmarketing.uz/ru/blog/crm-dlya-avtoservisa/", "author": {"@type": "Person", "name": "Elbek Musaev"}, "publisher": {"@id": "https://musaevmarketing.uz/#org"}, "about": "crm для автосервиса"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Musaev Marketing", "item": "https://musaevmarketing.uz/ru/"}, {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://musaevmarketing.uz/ru/blog/"}, {"@type": "ListItem", "position": 3, "name": "CRM для автосервиса: как возвращать клиентов к следующему ТО", "item": "https://musaevmarketing.uz/ru/blog/crm-dlya-avtoservisa/"}]}]</script>
-</head><body><header class="top"><div class="wrap bar"><a class="logo" href="/ru/"><i>MM</i><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav><a class="btn sm hcta" href="/ru/#contact">Бесплатная проверка</a><div class="langs"><a href="/blog/">UZ</a><a href="/ru/blog/" aria-current=page>RU</a><a href="/en/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav></details></div></header><main class="wrap"><article class="post"><p class="crumbs"><a href="/ru/">Musaev Marketing</a> / <a href="/ru/blog/">Блог</a></p><h1>CRM для автосервиса: как возвращать клиентов к следующему ТО</h1><p class="meta">Элбек Мусаев, основатель Musaev Marketing · 2026-11-11</p><p>Клиент приезжает менять масло, и мастер говорит ему, что тормозные колодки почти стёрлись и их стоит поменять в ближайшие пару месяцев. Клиент кивает и уезжает. Колодки ему потом меняют в другом сервисе, который просто оказался ближе к дому, потому что ваш о себе так и не напомнил. Многие автосервисы теряют деньги именно здесь: на людях, которые уже доверили им машину и были готовы вернуться.</p>
-<h2>Что такое CRM для автосервиса</h2>
-<p>CRM — программа, в которой хранится история каждого клиента и его машины: какие работы делали, сколько он заплатил, что советовал мастер и когда пора позвонить снова. В автосервисе она заменяет журнал на стойке приёмщика, тетрадь мастера и переписку в телефоне администратора. Пока сервис небольшой, владелец помнит постоянных клиентов в лицо. Когда машин становится двадцать в день, память перестаёт справляться, и CRM берёт эту работу на себя.</p>
+
+/* brand: monochrome + gold (logo 2026-11) */
+h1,h2,h3{font-weight:400!important;letter-spacing:.005em}
+h1{line-height:1.08}
+.num,.price .amount{font-weight:400!important}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--teal)}
+.eyebrow::before{background:var(--saf);box-shadow:none;border-radius:0;width:18px;height:1px}
+.btn{border-radius:8px;box-shadow:none;letter-spacing:.01em}
+.btn:hover{background:#2a2a2a}
+.btn.ghost:hover{background:transparent;border-color:var(--saf);color:var(--ink)}
+.grid .card,.grid .card:nth-child(n){border-top:3px solid var(--saf)}
+.card:hover{border-color:var(--saf)}
+.steps li::before{background:var(--ink);color:var(--btn-ink)}
+.ticks li::before{background:var(--saf);color:#0d0d0d}
+.member{border-left-color:var(--saf)!important}
+.offer{border-top-color:var(--saf)}
+.reel{background:linear-gradient(160deg,#1c1c1c,#0d0d0d 60%,#2b2414)}
+.foot-logo{height:64px;width:auto;margin-bottom:12px}
+@media (prefers-color-scheme:dark){.btn:hover{background:#fff}#realestate{background:#000}}
+.usp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.usp-card{background:#0d0d0d;color:#eeeae0;border-radius:var(--r);padding:26px;border-top:3px solid var(--saf)}
+.usp-card h3{color:#fff;font-size:22px;margin-top:10px}.usp-card p{margin:0;color:#cfc9bc}
+.usp-n{font:400 15px Forum,Georgia,serif;color:var(--saf);letter-spacing:.1em}
+@media (max-width:860px){.usp{grid-template-columns:1fr}}
+</style><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CRM для автосервиса: как возвращать клиентов к следующему ТО", "description": "CRM для автосервиса: какие данные о машине и клиенте записывать, как настроить напоминания о ТО по пробегу и не терять заявки из Instagram и Telegram.", "datePublished": "2026-11-11", "dateModified": "2026-11-14", "inLanguage": "ru", "mainEntityOfPage": "https://musaevmarketing.uz/ru/blog/crm-dlya-avtoservisa/", "author": {"@type": "Person", "name": "Elbek Musaev"}, "publisher": {"@id": "https://musaevmarketing.uz/#org"}, "about": "crm для автосервиса"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Musaev Marketing", "item": "https://musaevmarketing.uz/ru/"}, {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://musaevmarketing.uz/ru/blog/"}, {"@type": "ListItem", "position": 3, "name": "CRM для автосервиса: как возвращать клиентов к следующему ТО", "item": "https://musaevmarketing.uz/ru/blog/crm-dlya-avtoservisa/"}]}]</script>
+</head><body><header class="top"><div class="wrap bar"><a class="logo" href="/ru/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav><a class="btn sm hcta" href="/ru/#contact">Бесплатная проверка</a><div class="langs"><a href="/blog/">UZ</a><a href="/ru/blog/" aria-current=page>RU</a><a href="/en/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav></details></div></header><main class="wrap"><article class="post"><p class="crumbs"><a href="/ru/">Musaev Marketing</a> / <a href="/ru/blog/">Блог</a></p><h1>CRM для автосервиса: как возвращать клиентов к следующему ТО</h1><p class="meta">Элбек Мусаев, основатель Musaev Marketing · 2026-11-11</p><p>«Колодки у вас почти стёрлись, в ближайшие пару месяцев надо менять». В автосервисе без CRM эта фраза мастера так и остаётся словами, сказанными у кассы, пока клиент расплачивается за замену масла. Клиент кивает и уезжает. Колодки ему потом поменяют в сервисе, который оказался ближе к дому, потому что ваш так и не напомнил о себе. CRM для автосервиса нужна прежде всего здесь: чтобы совет мастера превращался в следующую запись.</p>
+<p>Деньги многие сервисы теряют именно на таких людях. Реклама и Reels приводят новых, а те, кто уже доверил вам машину и был готов вернуться, тихо уходят к соседу.</p>
+<h2>Что умеет CRM для автосервиса</h2>
+<p>CRM — программа, где хранится история клиента и его машины: какие работы делали, сколько он заплатил, что советовал мастер и когда пора позвонить снова. В сервисе она собирает в одно место журнал приёмщика, тетрадь мастера и переписку в телефоне администратора.</p>
+<p>Пока машин пять в день, владелец помнит постоянных клиентов в лицо. При двадцати машинах в день память сдаётся, и про колодки Азиз ака уже никто не помнит.</p>
 <h2>Что записывать о клиенте и машине</h2>
-<table><tr><th>Поле</th><th>Зачем оно нужно</th></tr><tr><td>Имя и телефон</td><td>связаться и узнать человека при повторном звонке</td></tr><tr><td>Марка, модель, год, госномер</td><td>быстро найти машину и подобрать запчасти</td></tr><tr><td>Пробег при каждом визите</td><td>рассчитать срок следующего ТО</td></tr><tr><td>Выполненные работы и запчасти</td><td>ответить на вопрос «вы мне это уже меняли?»</td></tr><tr><td>Рекомендации мастера</td><td>основа для повторного звонка</td></tr><tr><td>Откуда пришёл</td><td>Instagram, Telegram, карты, знакомые: понять, какая реклама работает</td></tr><tr><td>Сумма заказ-наряда</td><td>средний чек и список самых ценных клиентов</td></tr></table>
-<p>Карточку удобнее заполнять при приёмке машины. В конце смены половина деталей уже забыта, и в поле «рекомендации» остаётся прочерк.</p>
-<h2>Напоминания: ради них CRM и заводят</h2>
-<p><strong>ТО по пробегу.</strong> После двух визитов программа знает, сколько клиент проезжает в месяц, и сама ставит администратору задачу позвонить, когда подходит замена масла.</p>
-<p><strong>Сезонные работы.</strong> Перед летом в Фергане у людей ломаются кондиционеры, осенью многие меняют шины. Список клиентов, которым весной заправляли кондиционер, превращается в готовую рассылку на следующий год.</p>
+<table><tr><th>Поле</th><th>Зачем оно нужно</th></tr><tr><td>Имя и телефон</td><td>связаться и узнать человека при повторном звонке</td></tr><tr><td>Марка, модель, год, госномер</td><td>быстро найти машину и подобрать запчасти</td></tr><tr><td>Пробег при каждом визите</td><td>рассчитать срок следующего ТО</td></tr><tr><td>Выполненные работы и запчасти</td><td>ответить на вопрос «вы мне это уже меняли?»</td></tr><tr><td>Рекомендации мастера</td><td>основа для повторного звонка</td></tr><tr><td>Откуда пришёл</td><td>Instagram, Telegram, карты, знакомые</td></tr><tr><td>Сумма заказ-наряда</td><td>средний чек и список самых ценных клиентов</td></tr></table>
+<p>Заполнять карточку удобнее при приёмке машины. К концу смены половина деталей забывается, и в поле «рекомендации» остаётся прочерк, а именно из этого поля потом рождаются повторные визиты.</p>
+<h2>Напоминания, ради которых CRM заводят</h2>
+<p><strong>ТО по пробегу.</strong> После двух визитов программа знает, сколько клиент проезжает в месяц. Когда подходит замена масла, она сама ставит администратору задачу позвонить.</p>
+<p><strong>Сезонные работы.</strong> В Фергане перед летом у людей отказывают кондиционеры, осенью многие меняют резину. Список тех, кому весной заправляли кондиционер, к следующему маю превращается в готовую рассылку.</p>
 <p><strong>Советы мастера.</strong> Фраза «колодки на исходе» становится задачей на конкретную дату. Сообщение в Telegram может звучать так: «Ассалому алайкум, Азиз ака. В марте мастер советовал поменять передние колодки на вашем Cobalt. Можем записать вас на субботу утром, работа займёт около часа».</p>
-<p>Человек получает напоминание от сервиса, который помнит его машину. Скидка в таком сообщении часто даже не нужна.</p>
+<p>Такое сообщение человек читает как заботу сервиса, который помнит его машину. Скидку к нему часто можно даже не добавлять.</p>
 <h2>Заявки из Instagram и Telegram</h2>
-<p>Вопрос «сколько стоит замена масла на Gentra» приходит в директ в одиннадцать вечера. Если на него ответили утром и забыли записать номер, клиента нет. amoCRM и Bitrix24 умеют собирать сообщения из Instagram и Telegram в одно окно, где у каждого обращения есть ответственный и статус. Для небольшого сервиса хватит правила: администратор заносит каждое обращение в CRM в тот же день, даже если человек пока только спросил цену.</p>
-<p>Как превратить такие вопросы в записи на ремонт, мы разбирали в статье про <a href="/ru/blog/voronka-prodazh-eto/">воронку продаж</a>.</p>
-<h2>Что смотрит владелец раз в неделю</h2>
+<p>Вопрос «сколько стоит замена масла на Gentra» приходит в директ в одиннадцать вечера. Утром администратор отвечает, человек пишет «спасибо, подумаю», и номер никто не записывает. Когда он созреет, напомнить ему о себе вы уже не сможете.</p>
+<p>amoCRM и Bitrix24 собирают сообщения из Instagram и Telegram в одно окно, где у каждого обращения есть ответственный и статус. Небольшому сервису хватит и простого правила: администратор заносит каждое обращение в CRM в тот же день, даже если человек пока спросил только цену. Как вести такие вопросы до записи на ремонт, мы разбирали в статье про <a href="/ru/blog/voronka-prodazh-eto/">воронку продаж</a>.</p>
+<h2>Что владелец смотрит раз в неделю</h2>
 <ul>
 <li>сколько пришло обращений и откуда;</li>
 <li>сколько из них записались и сколько приехали;</li>
@@ -220,11 +246,18 @@ details.q summary::-webkit-details-marker{display:none}
 <li>сколько клиентов вернулись повторно за месяц;</li>
 <li>сколько напоминаний отправили и сколько людей по ним приехали.</li>
 </ul>
-<p>Последняя строка показывает, окупается ли CRM. Если напоминания уходят, а клиенты по ним не приезжают, стоит переписать текст или менять время звонка.</p>
+<p>Последняя строка показывает, окупается ли CRM. Если напоминания уходят, а по ним никто не едет, перепишите текст или поменяйте время звонка. Сообщение в восемь утра понедельника читают хуже, чем в обед субботы.</p>
 <h2>Какую программу выбрать</h2>
-<table><tr><th>Вариант</th><th>Кому подходит</th></tr><tr><td>Таблица Google</td><td>старт, до десяти машин в день; напоминания придётся ставить вручную</td></tr><tr><td>amoCRM, Bitrix24</td><td>сервисам, где много заявок из мессенджеров и рекламы</td></tr><tr><td>Программы для СТО с заказ-нарядами и складом</td><td>сервисам с собственным складом запчастей и несколькими постами</td></tr></table>
-<p>Выбирать стоит по одному вопросу: кто будет заполнять. Программа, в которую приёмщик ничего не вносит, бесполезна при любом наборе функций. Поэтому сначала договоритесь, какие пять полей обязательны, и проверяйте их заполнение каждую пятницу.</p>
-<p>Среди наших клиентов были сервисы Kia и Chery в Фергане. Если вы хотите, чтобы клиенты из Instagram возвращались к вам на каждое ТО, начните с CRM, а с роликами и рекламой поможем мы.</p><section class="band"><h2>Бесплатно разберём ваш аккаунт</h2><p>Посмотрим Instagram, карточку на картах и то, как быстро отвечают на заявку. Отдадим список: что исправить в первую очередь.</p><div class="cta"><a class="btn" href="tel:+998919993331">Позвонить</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div></section></article><section><h2>Ещё по теме</h2><div class="posts"><a class="card" href="/ru/blog/skolko-stoit-smm/"><span class="tag">сколько стоит smm продвижение в месяц</span><h3>Сколько стоит SMM-продвижение в месяц в Узбекистане</h3></a><a class="card" href="/ru/blog/reklama-zhk/"><span class="tag">реклама жк</span><h3>Реклама ЖК: как застройщику в Ферганской долине получать заявки, которые доходят до офиса</h3></a><a class="card" href="/ru/blog/otdel-prodazh-zastroyshchika/"><span class="tag">отдел продаж застройщика</span><h3>Отдел продаж застройщика: пять проверок, после которых реклама начинает окупаться</h3></a></div></section></main><footer class="wrap foot"><div class="cols"><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/">Блог</a><a href="/ru/#contact">Контакты</a><a href="https://t.me/+998919993331">Telegram</a><a href="https://www.instagram.com/musaev_marketing/">Instagram</a></div><p>© 2023–2026 Musaev Marketing · Фергана · Kontentdan natijaga.</p></footer><div class="mbar"><a class="btn" href="tel:+998919993331">Позвонить</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div><script>(function(){var K={"ym": "", "endpoint": "", "tg": "https://t.me/+998919993331"};
+<table><tr><th>Вариант</th><th>Кому подходит</th></tr><tr><td>Таблица Google</td><td>старт, до десяти машин в день; напоминания ставите вручную</td></tr><tr><td>amoCRM, Bitrix24</td><td>сервисам, где много заявок из мессенджеров и рекламы</td></tr><tr><td>Программы для СТО с заказ-нарядами и складом</td><td>сервисам со своим складом запчастей и несколькими постами</td></tr></table>
+<p>Решает один вопрос: кто будет её заполнять. Программа, в которую приёмщик ничего не вносит, бесполезна при любом наборе функций. Договоритесь, какие пять полей обязательны, и проверяйте их каждую пятницу. Общие принципы выбора для небольших компаний собраны в статье <a href="/ru/blog/crm-dlya-malogo-biznesa/">CRM для малого бизнеса</a>.</p>
+<p>Среди наших клиентов были сервисы Kia и Chery в Фергане. Ролики и реклама приводят человека в сервис впервые. Чтобы он приехал на следующее ТО, нужна карточка с его машиной и администратор, который вовремя напишет.</p>
+<h2>Частые вопросы</h2>
+<h3>Какая CRM подходит для небольшого автосервиса?</h3>
+<p>На старте хватит Google Таблицы с обязательными полями. Когда заявок из Instagram и Telegram становится много, переходят на amoCRM, Bitrix24 или специализированную программу для СТО.</p>
+<h3>Как напоминать клиентам о ТО?</h3>
+<p>Записывайте пробег при каждом визите. По двум визитам видно, сколько человек ездит в месяц, и CRM ставит задачу позвонить или написать в Telegram перед заменой масла.</p>
+<h3>Нужна ли CRM, если клиентов мало?</h3>
+<p>Если вы помните каждого клиента и его машину, можно подождать. Когда машин больше десяти в день, без записей теряются советы мастера и повторные визиты.</p><section class="band"><h2>Бесплатно разберём ваш аккаунт</h2><p>Посмотрим Instagram, карточку на картах и то, как быстро отвечают на заявку. Отдадим список: что исправить в первую очередь.</p><div class="cta"><a class="btn" href="tel:+998919993331">Позвонить</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div></section></article><section><h2>Ещё по теме</h2><div class="posts"><a class="card" href="/ru/blog/skolko-stoit-smm/"><span class="tag">сколько стоит smm продвижение в месяц</span><h3>Сколько стоит SMM-продвижение в месяц в Узбекистане: цены в сумах и состав работ</h3></a><a class="card" href="/ru/blog/reklama-zhk/"><span class="tag">реклама жк</span><h3>Реклама ЖК: как застройщику в Ферганской долине получать заявки, которые доходят до офиса</h3></a><a class="card" href="/ru/blog/otdel-prodazh-zastroyshchika/"><span class="tag">отдел продаж застройщика</span><h3>Отдел продаж застройщика: пять проверок, после которых реклама начинает окупаться</h3></a></div></section></main><footer class="wrap foot"><picture><source srcset="/assets/mm-full-w.png" media="(prefers-color-scheme: dark)"><img class="foot-logo" src="/assets/mm-full-b.png" width="76" height="64" alt="Musaev Marketing" loading="lazy"></picture><div class="cols"><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/">Блог</a><a href="/ru/#contact">Контакты</a><a href="https://t.me/+998919993331">Telegram</a><a href="https://www.instagram.com/musaev_marketing/">Instagram</a></div><p>© 2023–2026 Musaev Marketing · Фергана · Kontentdan natijaga.</p></footer><div class="mbar"><a class="btn" href="tel:+998919993331">Позвонить</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div><script>(function(){var K={"ym": "", "endpoint": "", "tg": "https://t.me/+998919993331"};
 function goal(n){try{if(K.ym&&window.ym)ym(+K.ym,"reachGoal",n);if(window.gtag)gtag("event",n);if(window.fbq)n==="lead"?fbq("track","Lead"):fbq("trackCustom",n)}catch(x){}}
 try{var q=new URLSearchParams(location.search),u={};["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){if(q.get(k))u[k]=q.get(k)});if(Object.keys(u).length)sessionStorage.setItem("mm_utm",JSON.stringify(u))}catch(x){}
 function utm(){try{return JSON.parse(sessionStorage.getItem("mm_utm")||"{}")}catch(x){return{}}}
