@@ -425,9 +425,13 @@ html:not(.js) .quiz-sec{display:none}
 @keyframes vt-in{from{opacity:0;transform:translateY(22px)}}
 
 /* ---------- дом на странице застройщиков ---------- */
-.bld{--bh:min(560px,calc(100vh - 110px));position:fixed;left:20px;bottom:20px;height:var(--bh);aspect-ratio:420/790;box-sizing:border-box;z-index:20;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:40px 10px 8px;box-shadow:var(--shadow)}
+.bld{position:fixed;inset:64px 0 0 0;z-index:0;pointer-events:none}
 .has-bld main,.has-bld footer{position:relative;z-index:1}
-@media (min-width:1100px){.has-bld main,.has-bld footer{padding-left:calc(var(--bh,560px) * .532 + 40px)}.has-bld{--bh:min(560px,calc(100vh - 110px))}}
+/* сайт листами поверх дома */
+.has-bld main>section{max-width:min(1120px,calc(100% - 32px));box-sizing:border-box;background:color-mix(in srgb,var(--card) 93%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:24px;box-shadow:0 18px 50px -24px rgba(0,0,0,.28);padding:44px max(20px,3.5vw);margin:24px auto 34vh}
+.has-bld main>section.hero{margin-top:28px}
+.has-bld main>section:last-child{margin-bottom:24px}
+.has-bld footer{max-width:min(1120px,calc(100% - 32px));box-sizing:border-box;background:var(--card);border:1px solid var(--line);border-radius:24px 24px 0 0;padding-inline:max(20px,3.5vw)}
 .bld svg{width:100%;height:100%;overflow:visible}
 .bld svg *{vector-effect:non-scaling-stroke}
 .bld path,.bld rect,.bld circle{fill:none;stroke:var(--saf);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
@@ -455,7 +459,7 @@ html:not(.js) .quiz-sec{display:none}
 .bld .tree,.bld .lamp{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:bottom;transition:opacity .8s,transform .8s}
 .bld.green .tree,.bld.green .lamp{opacity:1;transform:none}
 .bld .tree circle{fill:color-mix(in srgb,var(--saf) 18%,transparent)}
-.bld-st{position:absolute;left:50%;top:10px;transform:translateX(-50%);margin:0;white-space:nowrap;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 10px;border:1px solid var(--line);border-radius:99px}
+.bld-st{position:absolute;left:50%;top:14px;transform:translateX(-50%);margin:0;white-space:nowrap;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 10px;border:1px solid var(--line);border-radius:99px}
 
 .bld .exc .arm{animation:dig 2.6s ease-in-out infinite;transform-origin:138px 716px;transform-box:view-box}
 @keyframes dig{50%{transform:rotate(-12deg)}}
@@ -478,7 +482,7 @@ html:not(.js) .quiz-sec{display:none}
 @keyframes walk{to{transform:translateX(18px)}}
 .bld.sold .roof rect{fill:var(--saf);transition:fill 1s}
 .bld.sold .bld-st,.bld-st.sold{color:var(--saf);border-color:var(--saf)}
-@media (max-width:1099px){.bld{left:10px;bottom:calc(84px + env(safe-area-inset-bottom));height:150px;border-radius:14px;padding:8px 4px 2px}.bld-st{display:none}.bld .tree,.bld .lamp,.bld .car,.bld .folk,.bld .exc{display:none}}
+@media (max-width:700px){.has-bld main>section{margin-bottom:46vh;padding:28px 18px;border-radius:18px}.bld{inset:58px 0 72px 0}}
 
 /* ---------- сцены работы команды на главной ---------- */
 main.idx>section{position:relative}
@@ -617,7 +621,7 @@ bs.addEventListener("input",function(){var q=nz(bs.value.trim()),n=0;cards.forEa
   var B=document.querySelector('.bld'); if(!B) return;
   var fl=[].slice.call(B.querySelectorAll('.fl')), ws=[].slice.call(B.querySelectorAll('.w')), st=B.querySelector('.bld-st');
   var names=[]; try{names=JSON.parse(st.dataset.st)}catch(x){}
-  ws.sort(function(a,b){return ((+a.dataset.k*37)%48)-((+b.dataset.k*37)%48)});
+  var NW=ws.length;ws.sort(function(a,b){return ((+a.dataset.k*37)%NW)-((+b.dataset.k*37)%NW)});
   var crane=B.querySelector('.crane'), N=fl.length, H=46, top0=700, raf=0, last=-1;
   function cl(v){return v<0?0:v>1?1:v}
   function upd(){
