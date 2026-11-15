@@ -437,6 +437,16 @@ a.partner:hover{border-color:var(--saf)}
 .vcard.on .vplay{display:none}
 @media (max-width:860px){.vgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.vcard{scroll-snap-align:start}}
 
+/* отзывы и кейс Kia */
+.rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:18px;margin-top:16px}
+.rcard h3{margin:10px 0 2px;font-size:18px}.rcard p{margin:0;color:var(--muted);font-size:15px}
+.rcard .reel,.rcard iframe{width:100%;aspect-ratio:9/16;height:auto;border-radius:18px}
+.kia-sec{padding:28px}
+.kcase{display:grid;grid-template-columns:minmax(0,280px) 1fr;gap:28px;align-items:center}
+.kcase img{width:100%;height:auto;border-radius:18px;display:block}
+.kcase h3{color:#fff;font-size:26px;margin:4px 0 8px}.kcase p{color:#d8d3c8}
+@media (max-width:700px){.rgrid{grid-template-columns:1fr 1fr;gap:10px}.kcase{grid-template-columns:1fr}.kcase img{max-width:300px}}
+
 /* ---------- переход между страницами ---------- */
 @view-transition{navigation:auto}
 ::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
