@@ -416,6 +416,93 @@ html:not(.js) .quiz-sec{display:none}
 @media (max-width:700px){.photos{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:70%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.photos .pic{scroll-snap-align:start}}
 .photos-2{grid-template-columns:repeat(2,1fr);max-width:620px;margin-top:28px}
 @media (max-width:700px){.photos-2{grid-template-columns:repeat(2,1fr);grid-auto-flow:row;overflow:visible}}
+
+/* ---------- переход между страницами ---------- */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:vt-in .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-14px) scale(.985)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(22px)}}
+
+/* ---------- дом на странице застройщиков ---------- */
+.bld{position:fixed;right:max(0px,calc((100vw - 1120px)/2 - 330px));bottom:0;height:min(86vh,760px);aspect-ratio:420/760;z-index:0;pointer-events:none;opacity:.95}
+.has-bld main,.has-bld footer{position:relative;z-index:1}
+.bld svg{width:100%;height:100%;overflow:visible}
+.bld svg *{vector-effect:non-scaling-stroke}
+.bld path,.bld rect,.bld circle{fill:none;stroke:var(--saf);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.bld .ground{stroke:var(--muted);stroke-width:1.2}
+.bld .pit,.bld .dig{stroke:var(--muted);stroke-dasharray:4 5;transition:opacity .8s}
+.bld .pitg{opacity:var(--pit,1);transition:opacity .6s}
+.bld .fl{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .6s var(--ease,ease)}
+.bld .fl.on{opacity:1;transform:none}
+.bld .slab{fill:transparent;transition:fill 1s}
+.bld.fac .slab{fill:var(--card)}
+.bld .col{stroke:var(--line)}.bld.fac .col{opacity:0}
+.bld .wr{opacity:0;transition:opacity .6s,fill .8s}
+.bld.fac .wr{opacity:1;fill:var(--bg)}
+.bld .w.lit .wr{fill:#f3d58b}
+.bld .cur,.bld .ppl *{opacity:0;transition:opacity .9s}
+.bld .cur{fill:#d9b864;stroke:none}
+.bld .ppl circle,.bld .ppl path{stroke:none;fill:#6b5420}
+.bld .w.live .cur,.bld .w.live .ppl *{opacity:.9}
+.bld .bal{stroke-width:2;opacity:0;transition:opacity .6s}.bld.fac .bal{opacity:1}
+.bld .roof{opacity:0;transition:opacity .8s}.bld.fac .roof{opacity:1}
+.bld .crane{transition:opacity 1s,transform .8s}
+.bld.done-c .crane{opacity:0;transform:translateX(30px)}
+.bld .hook{animation:hook 3.4s ease-in-out infinite;transform-origin:346px 120px}
+@keyframes hook{50%{transform:rotate(4deg)}}
+.bld .tree,.bld .lamp{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:bottom;transition:opacity .8s,transform .8s}
+.bld.green .tree,.bld.green .lamp{opacity:1;transform:none}
+.bld .tree circle{fill:color-mix(in srgb,var(--saf) 18%,transparent)}
+.bld-st{position:absolute;left:4%;top:12%;margin:0;white-space:nowrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 10px;border:1px solid var(--line);border-radius:99px}
+
+.bld .exc .arm{animation:dig 2.6s ease-in-out infinite;transform-origin:138px 716px;transform-box:view-box}
+@keyframes dig{50%{transform:rotate(-12deg)}}
+.bld .heap{stroke:var(--muted)}
+.bld .trolley{animation:trol 7s ease-in-out infinite}
+@keyframes trol{0%,100%{transform:translateX(0)}50%{transform:translateX(110px)}}
+.bld .crane rect{fill:var(--bg)}
+.bld .door,.bld .canopy,.bld .pil{opacity:0;transition:opacity .8s}
+.bld.fac .door,.bld.fac .canopy,.bld.fac .pil{opacity:1}
+.bld .pil{stroke:var(--line)}
+.bld.night .shop{fill:#f3d58b}
+.bld .plant{opacity:0;transition:opacity .9s;stroke:#7a8f4c}
+.bld .w.live .plant{opacity:1}
+.bld .moon{opacity:0;fill:color-mix(in srgb,var(--saf) 22%,transparent);transition:opacity 1.2s}
+.bld.night .moon{opacity:1}
+.bld .car,.bld .folk{opacity:0;transition:opacity .8s,transform .8s}
+.bld.green .car,.bld.green .folk{opacity:1}
+.bld .folk{animation:walk 6s ease-in-out infinite alternate}
+.bld .folk:nth-of-type(2n){animation-duration:8s;animation-direction:alternate-reverse}
+@keyframes walk{to{transform:translateX(18px)}}
+.bld.sold .roof rect{fill:var(--saf);transition:fill 1s}
+.bld.sold .bld-st,.bld-st.sold{color:var(--saf);border-color:var(--saf)}
+@media (max-width:1500px){.bld{right:-40px;opacity:.5}}
+@media (max-width:860px){.bld{right:auto;left:10px;bottom:calc(84px + env(safe-area-inset-bottom));height:104px;opacity:1;z-index:5;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 4px 2px;box-shadow:var(--shadow)}.bld-st{display:none}.bld .tree,.bld .lamp,.bld .car,.bld .folk,.bld .exc{display:none}}
+
+/* ---------- сцены работы команды на главной ---------- */
+main.idx>section{position:relative}
+.scene{position:absolute;right:max(0px,2%);top:6px;width:min(200px,26vw);color:var(--saf);opacity:.42;pointer-events:none;z-index:0}
+main.idx>section>*:not(.scene){position:relative;z-index:1}
+.scene svg{width:100%;height:auto;overflow:visible}
+.scene *{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+html.js .scene *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease,ease)}
+html.js .scene.in *{stroke-dashoffset:0}
+.scene .blink{fill:currentColor;animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.scene .blink2{animation:pop 4s ease-in-out infinite;transform-box:fill-box;transform-origin:left bottom}
+@keyframes pop{0%,40%{transform:scale(0)}55%,100%{transform:scale(1)}}
+.scene .swing{animation:swing 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:left top}
+@keyframes swing{50%{transform:rotate(14deg)}}
+.band .scene{opacity:.3}
+@media (max-width:860px){.scene{width:96px;top:0;right:4px;opacity:.26}}
+
+@media (prefers-reduced-motion:reduce){
+ ::view-transition-old(root),::view-transition-new(root){animation:none}
+ .bld .fl,.bld *,.scene *{transition:none!important;animation:none!important}
+ html.js .scene *{stroke-dashoffset:0}
+}
+@media print{.bld,.scene{display:none}}
 </style><link rel="alternate" hreflang="uz" href="https://musaevmarketing.uz/smm/"><link rel="alternate" hreflang="ru" href="https://musaevmarketing.uz/ru/smm/"><link rel="alternate" hreflang="en" href="https://musaevmarketing.uz/en/smm/"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SMM for retail, restaurants and car brands", "description": "Scripts, Reels shoots, design, Stories and ads for retail, restaurants and car brands in Fergana. 28M UZS per month, three-month contract.", "provider": {"@id": "https://musaevmarketing.uz/#org"}, "areaServed": [{"@type": "City", "name": "Fergana"}, {"@type": "City", "name": "Margilan"}, {"@type": "City", "name": "Kokand"}, {"@type": "City", "name": "Namangan"}, {"@type": "City", "name": "Andijan"}, {"@type": "City", "name": "Kuvasay"}], "offers": {"@type": "Offer", "price": 28000000, "priceCurrency": "UZS", "description": "Six specialists, three-month contract."}}</script>
 </head><body><header class="top"><div class="wrap bar"><a class="logo" href="/en/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/en/developers/">Developers</a><a href="/en/smm/" aria-current=page>SMM</a><a href="/en/#cases">Work</a><a href="/en/#prices">Pricing</a><a href="/en/story/">About</a><a href="/en/#contact">Contact</a></nav><a class="btn sm hcta" href="/en/#contact">Free check</a><div class="langs"><a href="/smm/">UZ</a><a href="/ru/smm/">RU</a><a href="/en/smm/" aria-current=page>EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/en/developers/">Developers</a><a href="/en/smm/" aria-current=page>SMM</a><a href="/en/#cases">Work</a><a href="/en/#prices">Pricing</a><a href="/en/story/">About</a><a href="/en/#contact">Contact</a></nav></details></div></header><main class="idx"><section class="hero wrap" style="display:block"><svg class="peaks" viewBox="0 0 420 240" aria-hidden="true" focusable="false"><path d="M18 236 L104 6 L170 236"/><path d="M128 236 L214 22 L282 236"/><path d="M240 236 L322 8 L402 236"/><path class="base" d="M0 236 H420"/></svg><p class="eyebrow">SMM · retail, HoReCa, auto</p><h1 class="h1-offer"><span class="w" style="--i:0">SMM</span> <span class="w" style="--i:1">for</span> <span class="w" style="--i:2">retail,</span> <span class="w" style="--i:3">restaurants</span> <span class="w" style="--i:4">and</span> <span class="w" style="--i:5">car</span> <span class="w" style="--i:6">brands</span></h1><p class="lead">Six specialists run your Instagram: they write scripts, shoot Reels, make design and Stories and run ads on videos that already perform.</p><div class="cta"><a class="btn" href="#contact">Free Instagram audit</a><a class="btn ghost" href="https://t.me/+998919993331">Message on Telegram</a></div></section><div class="ticker" aria-hidden="true"><div class="tk"><span>Reels scripts</span><span>Video shoots</span><span>Instagram ads</span><span>Sales team</span><span>CRM</span><span>Weekly report</span><span>Kontentdan natijaga</span><span>Reels scripts</span><span>Video shoots</span><span>Instagram ads</span><span>Sales team</span><span>CRM</span><span>Weekly report</span><span>Kontentdan natijaga</span><span>Reels scripts</span><span>Video shoots</span><span>Instagram ads</span><span>Sales team</span><span>CRM</span><span>Weekly report</span><span>Kontentdan natijaga</span></div></div><section class="wrap observe"><p>A cafe owner films a video between orders and posts it the same evening. It gets a few hundred views and he decides Instagram does not work. Usually the problem is the first seconds: they do not show why anyone should come.</p></section><section class="wrap"><h2>Numbers from other projects</h2><div class="grid"><div class="card"><h3>Verona Gaming</h3><span class="num">5.8M</span><p class="muted small">views on one Reel, May 2025; over 1M views every month in June–August</p></div><div class="card"><h3>Kia Fergana</h3><span class="num">2.98M</span><p class="muted small">views in 30 days, 24.5% from ads</p></div><div class="card"><h3>Dodo Pizza Fergana</h3><span class="num">1.94M</span><p class="muted small">views on one Reel, 9–30 January 2026</p></div><div class="card"><h3>Bigmart</h3><span class="num">0 → 5,004</span><p class="muted small">followers in two weeks, new account</p></div></div><p class="muted small">Figures from Instagram insights; screenshots on file.</p><div class="photos photos-2"><figure class="pic"><img src="/assets/foto/dodo-fasad-s.webp" srcset="/assets/foto/dodo-fasad-s.webp 480w, /assets/foto/dodo-fasad.webp 720w" sizes="(max-width:860px) 45vw, 260px" width="480" height="640" loading="lazy" decoding="async" alt="Dodo Pizza Farg‘ona · opening day"><figcaption>Dodo Pizza Farg‘ona · opening day</figcaption></figure><figure class="pic"><img src="/assets/foto/dodo-neon-s.webp" srcset="/assets/foto/dodo-neon-s.webp 480w, /assets/foto/dodo-neon.webp 720w" sizes="(max-width:860px) 45vw, 260px" width="480" height="640" loading="lazy" decoding="async" alt="Dodo Pizza Farg‘ona · the dining room"><figcaption>Dodo Pizza Farg‘ona · the dining room</figcaption></figure></div></section><section class="wrap"><h2>Who works on your account</h2><div class="team"><div class="member"><strong>Scriptwriter</strong></div><div class="member"><strong>Account manager</strong></div><div class="member"><strong>Designer</strong></div><div class="member"><strong>Videographer</strong></div><div class="member"><strong>Editor</strong></div><div class="member"><strong>Stories maker</strong></div></div></section><section class="wrap"><div class="grid"><article class="card price"><h3>SMM retainer</h3><p class="amount">28M UZS / month</p><p>Six specialists, three-month contract.</p></article></div><p class="muted small">Prices in Uzbek sum (UZS). Ad budget terms are set in the contract.</p></section><section id="contact" class="wrap band contact-grid"><div><h2>Start with a free audit</h2><p>We review your Instagram, map listing and inquiry response time. Call us or send your business name and account link on Telegram.</p><p class="contacts"><a href="tel:+998919993331">+998 91 999-33-31</a><br><a href="https://t.me/+998919993331">Telegram</a> · <a href="https://www.instagram.com/musaev_marketing/">Instagram</a></p></div><form class="lead-form" id="f-smm" data-prefix="Website request" data-ok="Thank you. Request sent, we will call during business hours." data-fallback="Opening Telegram. The request text is copied: paste it into the chat and send." data-err="Enter the full number: +998 and 9 digits." data-okt="Thank you" data-ready="Request ready" data-opentg="Open Telegram" novalidate><div class="fl"><input id="smm-name" name="name" placeholder=" " autocomplete="name"><label for="smm-name">Name</label></div><div class="fl"><input id="smm-project" name="project" placeholder=" " autocomplete="organization"><label for="smm-project">Company or project</label></div><div class="fl"><input id="smm-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required aria-describedby="smm-err"><label for="smm-phone">Phone</label><small class="ferr" id="smm-err"></small></div><input type="hidden" name="answers"><input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><button class="btn" type="submit">Send request</button><p class="fnote">We use your number only to contact you.</p></form></section></main><footer class="wrap foot"><picture><source srcset="/assets/mm-full-w.png" media="(prefers-color-scheme: dark)"><img class="foot-logo" src="/assets/mm-full-b.png" width="76" height="64" alt="Musaev Marketing" loading="lazy"></picture><div class="cols"><a href="/en/developers/">Developers</a><a href="/en/smm/">SMM</a><a href="/en/#cases">Work</a><a href="/en/#prices">Pricing</a><a href="/en/story/">About</a><a href="/en/#contact">Contact</a><a href="https://t.me/+998919993331">Telegram</a><a href="https://www.instagram.com/musaev_marketing/">Instagram</a></div><p>© 2023–2026 Musaev Marketing · Fergana · Kontentdan natijaga — from content to results.</p></footer><div class="mbar"><a class="btn" href="tel:+998919993331">Call</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div><div class="hlp"><button type="button" class="hlp-btn" aria-expanded="false" aria-controls="hlp-p"><span class="hlp-ic" aria-hidden="true"></span><span class="hlp-t">Questions?</span></button><div class="hlp-p" id="hlp-p" role="dialog" aria-label="Questions?" hidden><div class="hlp-h"><img src="/assets/mm-mark-w.png" width="44" height="24" alt=""><div><b>Musaev Marketing</b><small>Frequent questions</small></div><button type="button" class="hlp-x" aria-label="Close">×</button></div><div class="hlp-log" aria-live="polite"><p class="bub">Hello. Pick a question or message us directly.</p></div><div class="hlp-qs"><button type="button" class="hq" data-a="The SMM retainer is 28M UZS per month: six specialists on a three-month contract. For developers: from 12.5M UZS per month plus a percentage of apartments sold, and we pay the sales managers. Ad budget is separate.">How much does social media marketing cost in Fergana?</button><button type="button" class="hq" data-a="We do. We hire, train and pay the managers. If apartments do not sell, that cost is our loss, so we work every inquiry with you.">Who runs the sales team?</button><button type="button" class="hq" data-a="The Fergana Valley: Fergana, Margilan, Kokand, Kuvasay, Namangan and Andijan.">Which cities do you cover?</button><button type="button" class="hq" data-a="Yes. We film the project, run ads and check the sales team&#x27;s response time, office invitations and follow-up calls, then set up scripts and monitoring.">Do you work with real estate developers?</button><button type="button" class="hq" data-a="No. You pay Meta directly for ads; we set up the campaigns and report cost per inquiry every week.">Is the ad budget included in the price?</button><button type="button" class="hq" data-a="Inquiries first: how many came in, how many were answered and how fast, how many people visited the office. Then views, reach and cost per inquiry.">What is in the weekly report?</button><button type="button" class="hq" data-a="We ran all of JBA Group&#x27;s projects at once, and worked with Dream Residence, TXT Group, Crystal Avenue, Central Avenue, Sohil Bo&#x27;yi, Yaqinlar, Qadrdonlar and Rich House.">Which developers have you worked with?</button></div><p class="hlp-more" hidden>Still have a question? Message us on Telegram or call.</p><div class="hlp-f"><a class="btn sm" href="https://t.me/+998919993331">Message on Telegram</a><a class="btn sm ghost" href="tel:+998919993331">Call</a><a class="hlp-quiz" href="/en/#quiz">First step in 4 questions →</a></div></div></div><script>(function(){var K={"ym": "", "endpoint": "", "tg": "https://t.me/+998919993331"};var D=document.documentElement,RM=matchMedia("(prefers-reduced-motion: reduce)").matches,IO="IntersectionObserver" in window;
 function goal(n){try{if(K.ym&&window.ym)ym(+K.ym,"reachGoal",n);if(window.gtag)gtag("event",n);if(window.fbq)n==="lead"?fbq("track","Lead"):fbq("trackCustom",n)}catch(x){}}
@@ -485,4 +572,42 @@ setTimeout(function(){t.className="bub";t.textContent=q.dataset.a;lg.scrollTop=l
 var bs=document.querySelector(".bsearch input");if(bs){var cards=$$(".posts a.card"),bc=document.querySelector(".bcount"),bn=document.querySelector(".bnone"),nz=function(s){return s.toLowerCase().replace(/[‘’ʻʼ`']/g,"'")};
 cards.forEach(function(c){c.dataset.s=nz(c.textContent)});
 bs.addEventListener("input",function(){var q=nz(bs.value.trim()),n=0;cards.forEach(function(c){var y=!q||c.dataset.s.indexOf(q)>-1;c.hidden=!y;if(y)n++});bc.textContent=q?bs.dataset.found.replace("{n}",n):"";bn.hidden=n>0})}
+
+/* ---- дом на странице застройщиков: строится по мере прокрутки ---- */
+(function(){
+  var B=document.querySelector('.bld'); if(!B) return;
+  var fl=[].slice.call(B.querySelectorAll('.fl')), ws=[].slice.call(B.querySelectorAll('.w')), st=B.querySelector('.bld-st');
+  var names=[]; try{names=JSON.parse(st.dataset.st)}catch(x){}
+  ws.sort(function(a,b){return ((+a.dataset.k*37)%48)-((+b.dataset.k*37)%48)});
+  var crane=B.querySelector('.crane'), N=fl.length, H=46, top0=700, raf=0, last=-1;
+  function cl(v){return v<0?0:v>1?1:v}
+  function upd(){
+    raf=0;
+    var max=document.documentElement.scrollHeight-innerHeight, p=max>0?cl(scrollY/max):1;
+    if(Math.abs(p-last)<.002) return; last=p;
+    B.dataset.p='';
+    B.style.setProperty('--pit',String(1-cl((p-.04)/.12)));
+    var built=Math.round(cl((p-.06)/.5)*N);
+    fl.forEach(function(f,i){f.classList.toggle('on',i<built)});
+    B.classList.toggle('fac',p>.56);
+    B.classList.toggle('done-c',p>.64);
+    var lit=Math.round(cl((p-.6)/.25)*ws.length), live=Math.round(cl((p-.78)/.18)*ws.length);
+    ws.forEach(function(w,i){w.classList.toggle('lit',i<lit);w.classList.toggle('live',i<live)});
+    B.classList.toggle('green',p>.84);
+    B.classList.toggle('night',p>.6);
+    B.classList.toggle('sold',p>.95);
+    var s=p<.06?0:p<.3?1:p<.56?2:p<.62?3:p<.8?4:p<.95?5:6;
+    if(st&&names[s]&&st.textContent!==names[s]){st.textContent=names[s];st.classList.toggle('sold',s===6)}
+  }
+  addEventListener('scroll',function(){if(!raf) raf=requestAnimationFrame(upd)},{passive:true});
+  addEventListener('resize',upd); upd();
+})();
+
+/* ---- сцены на главной: рисуются, когда раздел виден ---- */
+(function(){
+  var sc=document.querySelectorAll('.scene'); if(!sc.length) return;
+  if(!('IntersectionObserver' in window)){[].forEach.call(sc,function(s){s.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.25});
+  [].forEach.call(sc,function(s){io.observe(s)});
+})();
 })();</script></body></html>

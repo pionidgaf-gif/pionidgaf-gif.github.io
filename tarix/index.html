@@ -416,6 +416,93 @@ html:not(.js) .quiz-sec{display:none}
 @media (max-width:700px){.photos{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:70%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.photos .pic{scroll-snap-align:start}}
 .photos-2{grid-template-columns:repeat(2,1fr);max-width:620px;margin-top:28px}
 @media (max-width:700px){.photos-2{grid-template-columns:repeat(2,1fr);grid-auto-flow:row;overflow:visible}}
+
+/* ---------- переход между страницами ---------- */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:vt-in .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-14px) scale(.985)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(22px)}}
+
+/* ---------- дом на странице застройщиков ---------- */
+.bld{position:fixed;right:max(0px,calc((100vw - 1120px)/2 - 330px));bottom:0;height:min(86vh,760px);aspect-ratio:420/760;z-index:0;pointer-events:none;opacity:.95}
+.has-bld main,.has-bld footer{position:relative;z-index:1}
+.bld svg{width:100%;height:100%;overflow:visible}
+.bld svg *{vector-effect:non-scaling-stroke}
+.bld path,.bld rect,.bld circle{fill:none;stroke:var(--saf);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.bld .ground{stroke:var(--muted);stroke-width:1.2}
+.bld .pit,.bld .dig{stroke:var(--muted);stroke-dasharray:4 5;transition:opacity .8s}
+.bld .pitg{opacity:var(--pit,1);transition:opacity .6s}
+.bld .fl{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .6s var(--ease,ease)}
+.bld .fl.on{opacity:1;transform:none}
+.bld .slab{fill:transparent;transition:fill 1s}
+.bld.fac .slab{fill:var(--card)}
+.bld .col{stroke:var(--line)}.bld.fac .col{opacity:0}
+.bld .wr{opacity:0;transition:opacity .6s,fill .8s}
+.bld.fac .wr{opacity:1;fill:var(--bg)}
+.bld .w.lit .wr{fill:#f3d58b}
+.bld .cur,.bld .ppl *{opacity:0;transition:opacity .9s}
+.bld .cur{fill:#d9b864;stroke:none}
+.bld .ppl circle,.bld .ppl path{stroke:none;fill:#6b5420}
+.bld .w.live .cur,.bld .w.live .ppl *{opacity:.9}
+.bld .bal{stroke-width:2;opacity:0;transition:opacity .6s}.bld.fac .bal{opacity:1}
+.bld .roof{opacity:0;transition:opacity .8s}.bld.fac .roof{opacity:1}
+.bld .crane{transition:opacity 1s,transform .8s}
+.bld.done-c .crane{opacity:0;transform:translateX(30px)}
+.bld .hook{animation:hook 3.4s ease-in-out infinite;transform-origin:346px 120px}
+@keyframes hook{50%{transform:rotate(4deg)}}
+.bld .tree,.bld .lamp{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:bottom;transition:opacity .8s,transform .8s}
+.bld.green .tree,.bld.green .lamp{opacity:1;transform:none}
+.bld .tree circle{fill:color-mix(in srgb,var(--saf) 18%,transparent)}
+.bld-st{position:absolute;left:4%;top:12%;margin:0;white-space:nowrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 10px;border:1px solid var(--line);border-radius:99px}
+
+.bld .exc .arm{animation:dig 2.6s ease-in-out infinite;transform-origin:138px 716px;transform-box:view-box}
+@keyframes dig{50%{transform:rotate(-12deg)}}
+.bld .heap{stroke:var(--muted)}
+.bld .trolley{animation:trol 7s ease-in-out infinite}
+@keyframes trol{0%,100%{transform:translateX(0)}50%{transform:translateX(110px)}}
+.bld .crane rect{fill:var(--bg)}
+.bld .door,.bld .canopy,.bld .pil{opacity:0;transition:opacity .8s}
+.bld.fac .door,.bld.fac .canopy,.bld.fac .pil{opacity:1}
+.bld .pil{stroke:var(--line)}
+.bld.night .shop{fill:#f3d58b}
+.bld .plant{opacity:0;transition:opacity .9s;stroke:#7a8f4c}
+.bld .w.live .plant{opacity:1}
+.bld .moon{opacity:0;fill:color-mix(in srgb,var(--saf) 22%,transparent);transition:opacity 1.2s}
+.bld.night .moon{opacity:1}
+.bld .car,.bld .folk{opacity:0;transition:opacity .8s,transform .8s}
+.bld.green .car,.bld.green .folk{opacity:1}
+.bld .folk{animation:walk 6s ease-in-out infinite alternate}
+.bld .folk:nth-of-type(2n){animation-duration:8s;animation-direction:alternate-reverse}
+@keyframes walk{to{transform:translateX(18px)}}
+.bld.sold .roof rect{fill:var(--saf);transition:fill 1s}
+.bld.sold .bld-st,.bld-st.sold{color:var(--saf);border-color:var(--saf)}
+@media (max-width:1500px){.bld{right:-40px;opacity:.5}}
+@media (max-width:860px){.bld{right:auto;left:10px;bottom:calc(84px + env(safe-area-inset-bottom));height:104px;opacity:1;z-index:5;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 4px 2px;box-shadow:var(--shadow)}.bld-st{display:none}.bld .tree,.bld .lamp,.bld .car,.bld .folk,.bld .exc{display:none}}
+
+/* ---------- сцены работы команды на главной ---------- */
+main.idx>section{position:relative}
+.scene{position:absolute;right:max(0px,2%);top:6px;width:min(200px,26vw);color:var(--saf);opacity:.42;pointer-events:none;z-index:0}
+main.idx>section>*:not(.scene){position:relative;z-index:1}
+.scene svg{width:100%;height:auto;overflow:visible}
+.scene *{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+html.js .scene *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease,ease)}
+html.js .scene.in *{stroke-dashoffset:0}
+.scene .blink{fill:currentColor;animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.scene .blink2{animation:pop 4s ease-in-out infinite;transform-box:fill-box;transform-origin:left bottom}
+@keyframes pop{0%,40%{transform:scale(0)}55%,100%{transform:scale(1)}}
+.scene .swing{animation:swing 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:left top}
+@keyframes swing{50%{transform:rotate(14deg)}}
+.band .scene{opacity:.3}
+@media (max-width:860px){.scene{width:96px;top:0;right:4px;opacity:.26}}
+
+@media (prefers-reduced-motion:reduce){
+ ::view-transition-old(root),::view-transition-new(root){animation:none}
+ .bld .fl,.bld *,.scene *{transition:none!important;animation:none!important}
+ html.js .scene *{stroke-dashoffset:0}
+}
+@media print{.bld,.scene{display:none}}
 </style><link rel="alternate" hreflang="uz" href="https://musaevmarketing.uz/tarix/"><link rel="alternate" hreflang="ru" href="https://musaevmarketing.uz/ru/istoriya/"><link rel="alternate" hreflang="en" href="https://musaevmarketing.uz/en/story/"><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "AboutPage", "name": "Musaev Marketing tarixi: Farg‘onalik yigit qanday agentlik ochdi", "url": "https://musaevmarketing.uz/tarix/", "inLanguage": "uz", "about": {"@id": "https://musaevmarketing.uz/#org"}, "mainEntity": {"@type": "Person", "name": "Elbek Musaev", "birthDate": "2001", "birthPlace": "Fergana", "jobTitle": "Asoschi va rahbar", "worksFor": {"@id": "https://musaevmarketing.uz/#org"}}}]</script>
 </head><body><header class="top"><div class="wrap bar"><a class="logo" href="/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/" aria-current=page>Biz haqimizda</a><a href="/blog/">Blog</a><a href="/#contact">Aloqa</a></nav><a class="btn sm hcta" href="/#contact">Bepul tekshiruv</a><div class="langs"><a href="/tarix/" aria-current=page>UZ</a><a href="/ru/istoriya/">RU</a><a href="/en/story/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/" aria-current=page>Biz haqimizda</a><a href="/blog/">Blog</a><a href="/#contact">Aloqa</a></nav></details></div></header><main class="wrap story"><section class="hero story-hero"><div><p class="eyebrow">Kompaniya tarixi</p><h1><span class="w" style="--i:0">Farg‘onalik</span> <span class="w" style="--i:1">oddiy</span> <span class="w" style="--i:2">yigit</span></h1><figure class="quote big"><blockquote>Men Farg‘onalik oddiy yigitman. Tadbirkorlarga yordam berishni juda xohlardim va o‘z agentligimgacha uzoq yo‘l bosib o‘tdim.</blockquote><figcaption>Elbek Musaev, asoschi</figcaption></figure></div></section><div class="story-grid"><div class="chapters"><section class="chap"><span class="chap-n">01</span><div><h2>Hammasi qanday boshlangan</h2><p>2001-yilda Farg‘onada tug‘ilganman. Chet elda o‘qidim: Moskva, Germaniya, Chexiya va Belgiyada. Keyin uyga qaytdim, chunki mahalliy tadbirkorlar bilan ishlashni xohlardim.</p><p>Marketingda 2018-yildan beri ishlayman. Shu yillar davomida 60 dan ortiq loyihani olib borganman.</p></div></section><section class="chap"><span class="chap-n">02</span><div><h2>Agentlik</h2><p>2023-yil 11-noyabrda Farg‘onada Musaev Marketing’ni ochdim. Kafe, do‘kon, avtosalon va maktablar uchun video oldik, akkauntlarini yuritdik: Dodo Pizza, Yaponamama, Bigmart, Kia, Verona, Registan School.</p><p>Bigmart akkaunti noldan 5 004 obunachigacha o‘sdi. Verona uchun olingan bitta Reels 5,8 mln ko‘rish yig‘di. Yaponamama uchun Andijondagi restoran ochilishini suratga oldik, bu brendning birinchi franshizasi edi.</p></div></section><section class="chap"><span class="chap-n">03</span><div><h2>Quruvchilar</h2><p>Vaqt o‘tib quruvchilardan keladigan ish ko‘paydi. JBA Group’ning barcha loyihalarini bir vaqtda olib bordik, Ibrat Buildings va Crystal Avenue (TXT Group) uchun Reels seriyalarini oldik, Azmaro Buildings bilan ishladik.</p><p>Kvartira sotib olish uzoq qaror. Shu yerda yaxshi videoning o‘zi yetmasligini ko‘rdik: menejer kechqurun javob bersa, so‘rov boshqa quruvchiga ketadi.</p></div></section><section class="chap"><span class="chap-n">04</span><div><h2>Musaev Marketing 2.0</h2><p>2026-yil avgustda SMMni sotuvdan alohida sotishni to‘xtatdik. Endi strategiyadan sotuvgacha butun ish uchun javob beramiz: taklif, kontent, reklama, so‘rovlar, sotuv va tahlil. Kontent-reja qoralamasi, raqobatchilar tahlili va xaritadagi kartochkalarni tekshirishni AI-agentlar tezlashtiradi, qarorni odamlar qabul qiladi.</p><p>Farg‘ona vodiysidagi bir turar joy majmuasida so‘rovlar oyiga 1 256 tadan 10 478 taga, ofisga kelganlar 88 tadan 1 022 taga yetdi. Sotuv bo‘limida menejerlar 2 tadan 10 taga ko‘paydi. Quruvchi so‘ragani uchun nomini aytmaymiz.</p></div></section><section class="chap"><span class="chap-n">05</span><div><h2>Bugun</h2><p>2026-yil noyabrda Farg‘ona vodiysi quruvchilari agentlikning asosiy yo‘nalishi bo‘ldi. 11-noyabrda agentlikka uch yil to‘ladi.</p><p>Har bir loyihani bir xil boshlaymiz: bepul tekshiruvda so‘rovlar qayerda yo‘qolayotganini ko‘rsatamiz.</p></div></section></div><aside class="miles"><h2>Yillar</h2><ul class="timeline"><li><time>2001</time> Farg‘onada tug‘ildim.</li><li><time>2018</time> Marketingda ishlay boshladim.</li><li><time>11.11.2023</time> Farg‘onada Musaev Marketing ochildi.</li><li><time>2025-yil may</time> Verona uchun Reels 5,8 mln ko‘rish yig‘di.</li><li><time>2025-yil yoz</time> Bigmart akkaunti ikki haftada noldan 5 004 obunachiga yetdi.</li><li><time>2026-yil yanvar</time> Dodo Pizza Farg‘ona uchun Reels uch haftada 1,9 mln ko‘rish yig‘di.</li><li><time>2026-yil avgust</time> Musaev Marketing 2.0: strategiyadan sotuv bo‘limigacha.</li><li><time>2026-yil noyabr</time> Quruvchilar asosiy yo‘nalish bo‘ldi. Agentlikka uch yil.</li></ul></aside></div><section><h2>Jamoa</h2><div class="team"><div class="member"><strong>Asoschi: strategiya va sotuv</strong></div><div class="member"><strong>Art-direktor</strong></div><div class="member"><strong>Video yo‘nalishi rahbari</strong></div><div class="member"><strong>Videograflar</strong></div><div class="member"><strong>Ssenariynavis</strong></div><div class="member"><strong>Montajchi</strong></div><div class="member"><strong>Dizayner</strong></div><div class="member"><strong>Akkaunt-menejer</strong></div><div class="member"><strong>Storismeyker</strong></div><div class="member"><strong>Brend yuzlari</strong></div></div><p class="muted small">Suratga olish, montaj va dizaynni odamlar qiladi. AI-agentlar qoralamalarni tayyorlaydi, jamoa tekshiradi.</p></section><section class="band"><h2>Bepul tekshiruvdan boshlang</h2><p>Qo‘ng‘iroq qiling yoki Instagram’da «AUDIT» deb yozing. Akkauntingizni, xaritadagi kartochkani va so‘rovga qancha tez javob berilishini tekshiramiz.</p><div class="cta"><a class="btn" href="tel:+998919993331">Qo‘ng‘iroq qilish</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div></section></main><footer class="wrap foot"><picture><source srcset="/assets/mm-full-w.png" media="(prefers-color-scheme: dark)"><img class="foot-logo" src="/assets/mm-full-b.png" width="76" height="64" alt="Musaev Marketing" loading="lazy"></picture><div class="cols"><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/">Blog</a><a href="/#contact">Aloqa</a><a href="https://t.me/+998919993331">Telegram</a><a href="https://www.instagram.com/musaev_marketing/">Instagram</a></div><p>© 2023–2026 Musaev Marketing · Farg‘ona · Kontentdan natijaga.</p></footer><div class="mbar"><a class="btn" href="tel:+998919993331">Qo‘ng‘iroq</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div><div class="hlp"><button type="button" class="hlp-btn" aria-expanded="false" aria-controls="hlp-p"><span class="hlp-ic" aria-hidden="true"></span><span class="hlp-t">Savol bormi?</span></button><div class="hlp-p" id="hlp-p" role="dialog" aria-label="Savol bormi?" hidden><div class="hlp-h"><img src="/assets/mm-mark-w.png" width="44" height="24" alt=""><div><b>Musaev Marketing</b><small>Ko‘p beriladigan savollar</small></div><button type="button" class="hlp-x" aria-label="Yopish">×</button></div><div class="hlp-log" aria-live="polite"><p class="bub">Assalomu alaykum. Savolni tanlang yoki bizga to‘g‘ridan to‘g‘ri yozing.</p></div><div class="hlp-qs"><button type="button" class="hq" data-a="Oylik SMM xizmati oyiga 28 mln so‘m turadi: oltita mutaxassis ishlaydi, shartnoma uch oyga. Quruvchilar bilan ishda oyiga 12,5 mln so‘mdan belgilangan to‘lov va sotilgan xonadonlardan foiz olamiz, sotuv menejerlari maoshini o‘zimiz to‘laymiz. Reklama byudjeti alohida.">Farg‘onada SMM xizmati qancha turadi?</button><button type="button" class="hq" data-a="Biz. Menejerlarni yollaymiz, o‘qitamiz va maoshini to‘laymiz. Xonadon sotilmasa, bu maoshlarni biz yo‘qotamiz. Shuning uchun har bir so‘rov bizga ham kerak.">Sotuv bo‘limini kim yuritadi?</button><button type="button" class="hq" data-a="Farg‘ona vodiysida: Farg‘ona, Marg‘ilon, Qo‘qon, Quvasoy, Namangan va Andijon.">Qaysi shaharlarda ishlaysiz?</button><button type="button" class="hq" data-a="Ko‘rishlar, qamrov va so‘rovlar soni birinchi haftalik hisobotdayoq bo‘ladi. Sotuv esa narxga, shartlarga va menejerga bog‘liq. Shuning uchun so‘rovlarni o‘zimiz qabul qilamiz va har birini CRM’da kuzatamiz.">Natijani qachon ko‘raman?</button><button type="button" class="hq" data-a="Avval sotuv bo‘limingizni tekshiramiz: so‘rovga necha daqiqada javob berishadi, xaridorni ofisga chaqirishadimi. Keyin loyihani suratga olamiz, reklama beramiz va menejerlarga skript yozamiz.">Quruvchilar bilan qanday ishlaysiz?</button><button type="button" class="hq" data-a="AI-agentlar kontent-reja qoralamasi, raqobatchilar tahlili, matn variantlari va hisobotlarni tayyorlaydi. Suratga olish, montaj va yakuniy qaror jamoada qoladi.">Sun’iy intellektdan qanday foydalanasiz?</button><button type="button" class="hq" data-a="Kirmaydi. Reklama byudjetini Meta’ga to‘g‘ridan to‘g‘ri o‘zingiz to‘laysiz, biz uni sozlaymiz va har hafta so‘rov narxini ko‘rsatamiz.">Reklama byudjeti narxga kiradimi?</button></div><p class="hlp-more" hidden>Yana savol bormi? Telegram’da yozing yoki qo‘ng‘iroq qiling.</p><div class="hlp-f"><a class="btn sm" href="https://t.me/+998919993331">Telegram’da yozish</a><a class="btn sm ghost" href="tel:+998919993331">Qo‘ng‘iroq</a><a class="hlp-quiz" href="/#quiz">4 savolda birinchi qadam →</a></div></div></div><script>(function(){var K={"ym": "", "endpoint": "", "tg": "https://t.me/+998919993331"};var D=document.documentElement,RM=matchMedia("(prefers-reduced-motion: reduce)").matches,IO="IntersectionObserver" in window;
 function goal(n){try{if(K.ym&&window.ym)ym(+K.ym,"reachGoal",n);if(window.gtag)gtag("event",n);if(window.fbq)n==="lead"?fbq("track","Lead"):fbq("trackCustom",n)}catch(x){}}
@@ -485,4 +572,42 @@ setTimeout(function(){t.className="bub";t.textContent=q.dataset.a;lg.scrollTop=l
 var bs=document.querySelector(".bsearch input");if(bs){var cards=$$(".posts a.card"),bc=document.querySelector(".bcount"),bn=document.querySelector(".bnone"),nz=function(s){return s.toLowerCase().replace(/[‘’ʻʼ`']/g,"'")};
 cards.forEach(function(c){c.dataset.s=nz(c.textContent)});
 bs.addEventListener("input",function(){var q=nz(bs.value.trim()),n=0;cards.forEach(function(c){var y=!q||c.dataset.s.indexOf(q)>-1;c.hidden=!y;if(y)n++});bc.textContent=q?bs.dataset.found.replace("{n}",n):"";bn.hidden=n>0})}
+
+/* ---- дом на странице застройщиков: строится по мере прокрутки ---- */
+(function(){
+  var B=document.querySelector('.bld'); if(!B) return;
+  var fl=[].slice.call(B.querySelectorAll('.fl')), ws=[].slice.call(B.querySelectorAll('.w')), st=B.querySelector('.bld-st');
+  var names=[]; try{names=JSON.parse(st.dataset.st)}catch(x){}
+  ws.sort(function(a,b){return ((+a.dataset.k*37)%48)-((+b.dataset.k*37)%48)});
+  var crane=B.querySelector('.crane'), N=fl.length, H=46, top0=700, raf=0, last=-1;
+  function cl(v){return v<0?0:v>1?1:v}
+  function upd(){
+    raf=0;
+    var max=document.documentElement.scrollHeight-innerHeight, p=max>0?cl(scrollY/max):1;
+    if(Math.abs(p-last)<.002) return; last=p;
+    B.dataset.p='';
+    B.style.setProperty('--pit',String(1-cl((p-.04)/.12)));
+    var built=Math.round(cl((p-.06)/.5)*N);
+    fl.forEach(function(f,i){f.classList.toggle('on',i<built)});
+    B.classList.toggle('fac',p>.56);
+    B.classList.toggle('done-c',p>.64);
+    var lit=Math.round(cl((p-.6)/.25)*ws.length), live=Math.round(cl((p-.78)/.18)*ws.length);
+    ws.forEach(function(w,i){w.classList.toggle('lit',i<lit);w.classList.toggle('live',i<live)});
+    B.classList.toggle('green',p>.84);
+    B.classList.toggle('night',p>.6);
+    B.classList.toggle('sold',p>.95);
+    var s=p<.06?0:p<.3?1:p<.56?2:p<.62?3:p<.8?4:p<.95?5:6;
+    if(st&&names[s]&&st.textContent!==names[s]){st.textContent=names[s];st.classList.toggle('sold',s===6)}
+  }
+  addEventListener('scroll',function(){if(!raf) raf=requestAnimationFrame(upd)},{passive:true});
+  addEventListener('resize',upd); upd();
+})();
+
+/* ---- сцены на главной: рисуются, когда раздел виден ---- */
+(function(){
+  var sc=document.querySelectorAll('.scene'); if(!sc.length) return;
+  if(!('IntersectionObserver' in window)){[].forEach.call(sc,function(s){s.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.25});
+  [].forEach.call(sc,function(s){io.observe(s)});
+})();
 })();</script></body></html>

@@ -416,6 +416,93 @@ html:not(.js) .quiz-sec{display:none}
 @media (max-width:700px){.photos{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:70%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.photos .pic{scroll-snap-align:start}}
 .photos-2{grid-template-columns:repeat(2,1fr);max-width:620px;margin-top:28px}
 @media (max-width:700px){.photos-2{grid-template-columns:repeat(2,1fr);grid-auto-flow:row;overflow:visible}}
+
+/* ---------- переход между страницами ---------- */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:vt-in .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-14px) scale(.985)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(22px)}}
+
+/* ---------- дом на странице застройщиков ---------- */
+.bld{position:fixed;right:max(0px,calc((100vw - 1120px)/2 - 330px));bottom:0;height:min(86vh,760px);aspect-ratio:420/760;z-index:0;pointer-events:none;opacity:.95}
+.has-bld main,.has-bld footer{position:relative;z-index:1}
+.bld svg{width:100%;height:100%;overflow:visible}
+.bld svg *{vector-effect:non-scaling-stroke}
+.bld path,.bld rect,.bld circle{fill:none;stroke:var(--saf);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.bld .ground{stroke:var(--muted);stroke-width:1.2}
+.bld .pit,.bld .dig{stroke:var(--muted);stroke-dasharray:4 5;transition:opacity .8s}
+.bld .pitg{opacity:var(--pit,1);transition:opacity .6s}
+.bld .fl{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .6s var(--ease,ease)}
+.bld .fl.on{opacity:1;transform:none}
+.bld .slab{fill:transparent;transition:fill 1s}
+.bld.fac .slab{fill:var(--card)}
+.bld .col{stroke:var(--line)}.bld.fac .col{opacity:0}
+.bld .wr{opacity:0;transition:opacity .6s,fill .8s}
+.bld.fac .wr{opacity:1;fill:var(--bg)}
+.bld .w.lit .wr{fill:#f3d58b}
+.bld .cur,.bld .ppl *{opacity:0;transition:opacity .9s}
+.bld .cur{fill:#d9b864;stroke:none}
+.bld .ppl circle,.bld .ppl path{stroke:none;fill:#6b5420}
+.bld .w.live .cur,.bld .w.live .ppl *{opacity:.9}
+.bld .bal{stroke-width:2;opacity:0;transition:opacity .6s}.bld.fac .bal{opacity:1}
+.bld .roof{opacity:0;transition:opacity .8s}.bld.fac .roof{opacity:1}
+.bld .crane{transition:opacity 1s,transform .8s}
+.bld.done-c .crane{opacity:0;transform:translateX(30px)}
+.bld .hook{animation:hook 3.4s ease-in-out infinite;transform-origin:346px 120px}
+@keyframes hook{50%{transform:rotate(4deg)}}
+.bld .tree,.bld .lamp{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:bottom;transition:opacity .8s,transform .8s}
+.bld.green .tree,.bld.green .lamp{opacity:1;transform:none}
+.bld .tree circle{fill:color-mix(in srgb,var(--saf) 18%,transparent)}
+.bld-st{position:absolute;left:4%;top:12%;margin:0;white-space:nowrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 10px;border:1px solid var(--line);border-radius:99px}
+
+.bld .exc .arm{animation:dig 2.6s ease-in-out infinite;transform-origin:138px 716px;transform-box:view-box}
+@keyframes dig{50%{transform:rotate(-12deg)}}
+.bld .heap{stroke:var(--muted)}
+.bld .trolley{animation:trol 7s ease-in-out infinite}
+@keyframes trol{0%,100%{transform:translateX(0)}50%{transform:translateX(110px)}}
+.bld .crane rect{fill:var(--bg)}
+.bld .door,.bld .canopy,.bld .pil{opacity:0;transition:opacity .8s}
+.bld.fac .door,.bld.fac .canopy,.bld.fac .pil{opacity:1}
+.bld .pil{stroke:var(--line)}
+.bld.night .shop{fill:#f3d58b}
+.bld .plant{opacity:0;transition:opacity .9s;stroke:#7a8f4c}
+.bld .w.live .plant{opacity:1}
+.bld .moon{opacity:0;fill:color-mix(in srgb,var(--saf) 22%,transparent);transition:opacity 1.2s}
+.bld.night .moon{opacity:1}
+.bld .car,.bld .folk{opacity:0;transition:opacity .8s,transform .8s}
+.bld.green .car,.bld.green .folk{opacity:1}
+.bld .folk{animation:walk 6s ease-in-out infinite alternate}
+.bld .folk:nth-of-type(2n){animation-duration:8s;animation-direction:alternate-reverse}
+@keyframes walk{to{transform:translateX(18px)}}
+.bld.sold .roof rect{fill:var(--saf);transition:fill 1s}
+.bld.sold .bld-st,.bld-st.sold{color:var(--saf);border-color:var(--saf)}
+@media (max-width:1500px){.bld{right:-40px;opacity:.5}}
+@media (max-width:860px){.bld{right:auto;left:10px;bottom:calc(84px + env(safe-area-inset-bottom));height:104px;opacity:1;z-index:5;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 4px 2px;box-shadow:var(--shadow)}.bld-st{display:none}.bld .tree,.bld .lamp,.bld .car,.bld .folk,.bld .exc{display:none}}
+
+/* ---------- сцены работы команды на главной ---------- */
+main.idx>section{position:relative}
+.scene{position:absolute;right:max(0px,2%);top:6px;width:min(200px,26vw);color:var(--saf);opacity:.42;pointer-events:none;z-index:0}
+main.idx>section>*:not(.scene){position:relative;z-index:1}
+.scene svg{width:100%;height:auto;overflow:visible}
+.scene *{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+html.js .scene *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease,ease)}
+html.js .scene.in *{stroke-dashoffset:0}
+.scene .blink{fill:currentColor;animation:blink 1.4s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.scene .blink2{animation:pop 4s ease-in-out infinite;transform-box:fill-box;transform-origin:left bottom}
+@keyframes pop{0%,40%{transform:scale(0)}55%,100%{transform:scale(1)}}
+.scene .swing{animation:swing 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:left top}
+@keyframes swing{50%{transform:rotate(14deg)}}
+.band .scene{opacity:.3}
+@media (max-width:860px){.scene{width:96px;top:0;right:4px;opacity:.26}}
+
+@media (prefers-reduced-motion:reduce){
+ ::view-transition-old(root),::view-transition-new(root){animation:none}
+ .bld .fl,.bld *,.scene *{transition:none!important;animation:none!important}
+ html.js .scene *{stroke-dashoffset:0}
+}
+@media print{.bld,.scene{display:none}}
 </style><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Маркетинг для клиник: как привлечь пациентов и не нарушить закон о рекламе", "description": "Маркетинг для клиник в Узбекистане: что запрещает закон о рекламе медицинских услуг, врач в кадре, карты, отзывы и запись в Telegram без потерь.", "datePublished": "2026-11-11", "dateModified": "2026-11-14", "inLanguage": "ru", "mainEntityOfPage": "https://musaevmarketing.uz/ru/blog/marketing-dlya-kliniki/", "author": {"@type": "Person", "name": "Elbek Musaev"}, "publisher": {"@id": "https://musaevmarketing.uz/#org"}, "about": "маркетинг для клиник"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Musaev Marketing", "item": "https://musaevmarketing.uz/ru/"}, {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://musaevmarketing.uz/ru/blog/"}, {"@type": "ListItem", "position": 3, "name": "Маркетинг для клиник: как привлечь пациентов и не нарушить закон о рекламе", "item": "https://musaevmarketing.uz/ru/blog/marketing-dlya-kliniki/"}]}]</script>
 </head><body><header class="top"><div class="wrap bar"><a class="logo" href="/ru/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav><a class="btn sm hcta" href="/ru/#contact">Бесплатная проверка</a><div class="langs"><a href="/blog/">UZ</a><a href="/ru/blog/" aria-current=page>RU</a><a href="/en/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/ru/zastroyshchikam/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav></details></div></header><div class="progress" aria-hidden="true"><span></span></div><main class="wrap"><div class="post-grid"><article class="post"><p class="crumbs"><a href="/ru/">Musaev Marketing</a> / <a href="/ru/blog/">Блог</a></p><h1>Маркетинг для клиник: как привлечь пациентов и не нарушить закон о рекламе</h1><p class="meta"><span>Элбек Мусаев, основатель Musaev Marketing</span><span>2026-11-14</span><span>4 мин чтения</span><a href="https://t.me/share/url?url=https%3A//musaevmarketing.uz/ru/blog/marketing-dlya-kliniki/&amp;text=%D0%9C%D0%B0%D1%80%D0%BA%D0%B5%D1%82%D0%B8%D0%BD%D0%B3%20%D0%B4%D0%BB%D1%8F%20%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%3A%20%D0%BA%D0%B0%D0%BA%20%D0%BF%D1%80%D0%B8%D0%B2%D0%BB%D0%B5%D1%87%D1%8C%20%D0%BF%D0%B0%D1%86%D0%B8%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%B8%20%D0%BD%D0%B5%20%D0%BD%D0%B0%D1%80%D1%83%D1%88%D0%B8%D1%82%D1%8C%20%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%20%D0%BE%20%D1%80%D0%B5%D0%BA%D0%BB%D0%B0%D0%BC%D0%B5" target="_blank" rel="noopener">Поделиться в Telegram</a></p><details class="toc-m"><summary>Содержание</summary><ol><li><a href="#s1">Что нельзя в рекламе медицинских услуг</a></li><li><a href="#s2">Врач в кадре</a></li><li><a href="#s3">Карты и отзывы</a></li><li><a href="#s4">Запись без потерь</a></li><li><a href="#s5">Что считать в маркетинге клиники</a></li><li><a href="#s6">Частые вопросы</a></li></ol></details><p>Перед первым визитом к стоматологу человек открывает Instagram клиники и ищет там лицо врача. Ему важно увидеть, как этот врач говорит, спокойно ли объясняет, не торопится ли. Фото фасада и список из сорока услуг на это не отвечают. Маркетинг для клиник во многом сводится к простой задаче: дать пациенту познакомиться с врачом до того, как он сядет в кресло.</p>
 <p>Вторая половина задачи — сделать это, не нарушив закон.</p>
@@ -524,4 +611,42 @@ setTimeout(function(){t.className="bub";t.textContent=q.dataset.a;lg.scrollTop=l
 var bs=document.querySelector(".bsearch input");if(bs){var cards=$$(".posts a.card"),bc=document.querySelector(".bcount"),bn=document.querySelector(".bnone"),nz=function(s){return s.toLowerCase().replace(/[‘’ʻʼ`']/g,"'")};
 cards.forEach(function(c){c.dataset.s=nz(c.textContent)});
 bs.addEventListener("input",function(){var q=nz(bs.value.trim()),n=0;cards.forEach(function(c){var y=!q||c.dataset.s.indexOf(q)>-1;c.hidden=!y;if(y)n++});bc.textContent=q?bs.dataset.found.replace("{n}",n):"";bn.hidden=n>0})}
+
+/* ---- дом на странице застройщиков: строится по мере прокрутки ---- */
+(function(){
+  var B=document.querySelector('.bld'); if(!B) return;
+  var fl=[].slice.call(B.querySelectorAll('.fl')), ws=[].slice.call(B.querySelectorAll('.w')), st=B.querySelector('.bld-st');
+  var names=[]; try{names=JSON.parse(st.dataset.st)}catch(x){}
+  ws.sort(function(a,b){return ((+a.dataset.k*37)%48)-((+b.dataset.k*37)%48)});
+  var crane=B.querySelector('.crane'), N=fl.length, H=46, top0=700, raf=0, last=-1;
+  function cl(v){return v<0?0:v>1?1:v}
+  function upd(){
+    raf=0;
+    var max=document.documentElement.scrollHeight-innerHeight, p=max>0?cl(scrollY/max):1;
+    if(Math.abs(p-last)<.002) return; last=p;
+    B.dataset.p='';
+    B.style.setProperty('--pit',String(1-cl((p-.04)/.12)));
+    var built=Math.round(cl((p-.06)/.5)*N);
+    fl.forEach(function(f,i){f.classList.toggle('on',i<built)});
+    B.classList.toggle('fac',p>.56);
+    B.classList.toggle('done-c',p>.64);
+    var lit=Math.round(cl((p-.6)/.25)*ws.length), live=Math.round(cl((p-.78)/.18)*ws.length);
+    ws.forEach(function(w,i){w.classList.toggle('lit',i<lit);w.classList.toggle('live',i<live)});
+    B.classList.toggle('green',p>.84);
+    B.classList.toggle('night',p>.6);
+    B.classList.toggle('sold',p>.95);
+    var s=p<.06?0:p<.3?1:p<.56?2:p<.62?3:p<.8?4:p<.95?5:6;
+    if(st&&names[s]&&st.textContent!==names[s]){st.textContent=names[s];st.classList.toggle('sold',s===6)}
+  }
+  addEventListener('scroll',function(){if(!raf) raf=requestAnimationFrame(upd)},{passive:true});
+  addEventListener('resize',upd); upd();
+})();
+
+/* ---- сцены на главной: рисуются, когда раздел виден ---- */
+(function(){
+  var sc=document.querySelectorAll('.scene'); if(!sc.length) return;
+  if(!('IntersectionObserver' in window)){[].forEach.call(sc,function(s){s.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.25});
+  [].forEach.call(sc,function(s){io.observe(s)});
+})();
 })();</script></body></html>
