@@ -435,6 +435,18 @@ a.partner:hover{border-color:var(--saf)}
 .jnote{color:#a8a39a;margin-top:16px}
 @media (max-width:860px){.partners,.joint .jgrid{grid-template-columns:1fr}}
 
+/* шоурил застройщиков: свои mp4 */
+.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.vcard{position:relative;margin:0;border-radius:18px;overflow:hidden;background:#111;aspect-ratio:9/16}
+.vcard video{width:100%;height:100%;object-fit:cover;display:block}
+.vcard figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;display:flex;flex-direction:column;gap:2px;pointer-events:none}
+.vcard figcaption b{font-size:15px}.vcard figcaption span{font-size:13px;color:#e8dfc8}
+.vplay{position:absolute;inset:0;width:100%;height:100%;background:transparent;border:0;cursor:pointer;display:grid;place-items:center}
+.vplay span{width:56px;height:56px;border-radius:50%;background:rgba(201,164,76,.92);color:#0d0d0d;display:grid;place-items:center;font-size:20px;padding-left:4px;opacity:.9;transition:transform .2s}
+.vplay:hover span{transform:scale(1.08)}
+.vcard.on .vplay{display:none}
+@media (max-width:860px){.vgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.vcard{scroll-snap-align:start}}
+
 /* ---------- переход между страницами ---------- */
 @view-transition{navigation:auto}
 ::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
@@ -668,5 +680,21 @@ bs.addEventListener("input",function(){var q=nz(bs.value.trim()),n=0;cards.forEa
   if(!('IntersectionObserver' in window)){[].forEach.call(sc,function(s){s.classList.add('in')});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.25});
   [].forEach.call(sc,function(s){io.observe(s)});
+})();
+
+/* ---- шоурил: превью без звука, по нажатию со звуком ---- */
+(function(){
+  var vs=[].slice.call(document.querySelectorAll('video.vr')); if(!vs.length) return;
+  var mot=!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if('IntersectionObserver' in window&&mot){
+    var io=new IntersectionObserver(function(es){es.forEach(function(x){var v=x.target;if(v.closest('.on'))return;if(x.isIntersecting){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.5});
+    vs.forEach(function(v){io.observe(v)});
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.vplay'); if(!b) return;
+    var card=b.closest('.vcard'), v=card.querySelector('video');
+    vs.forEach(function(o){if(o!==v&&o.closest('.on')){o.muted=true;o.controls=false;o.closest('.vcard').classList.remove('on')}});
+    card.classList.add('on'); v.loop=false; v.muted=false; v.controls=true; v.currentTime=0; v.play(); if(typeof goal==='function') goal('video');
+  });
 })();
 })();</script></body></html>
