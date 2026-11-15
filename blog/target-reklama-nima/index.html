@@ -417,6 +417,24 @@ html:not(.js) .quiz-sec{display:none}
 .photos-2{grid-template-columns:repeat(2,1fr);max-width:620px;margin-top:28px}
 @media (max-width:700px){.photos-2{grid-template-columns:repeat(2,1fr);grid-auto-flow:row;overflow:visible}}
 
+/* партнёры и совместные кейсы (в духе Buildence: тёмные карточки, крупные цифры) */
+.partners{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0}
+.partner{display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:96px;padding:18px 22px;border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--ink);text-decoration:none}
+.partner b{font-family:Forum,serif;font-size:26px;font-weight:400;letter-spacing:.01em}
+.partner span{font-size:14px;color:var(--muted)}
+a.partner:hover{border-color:var(--saf)}
+.joint .jgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.jcase{background:#161616;border:1px solid #2a2a2a;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.jcase h3{margin:0;color:#fff;font-size:24px}
+.jmeta{margin:0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#C9A44C}
+.jnums{display:flex;flex-wrap:wrap;gap:18px 26px;margin:6px 0}
+.jnums div{display:flex;flex-direction:column}
+.jnums .num{font-size:34px;line-height:1.1;color:#C9A44C;font-weight:700}
+.jnums div span:last-child{font-size:13px;color:#a8a39a}
+.jcase p:last-child{margin:0;color:#d8d3c8;font-size:15px}
+.jnote{color:#a8a39a;margin-top:16px}
+@media (max-width:860px){.partners,.joint .jgrid{grid-template-columns:1fr}}
+
 /* ---------- переход между страницами ---------- */
 @view-transition{navigation:auto}
 ::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
