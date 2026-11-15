@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="uz">
-<head><meta name="robots" content="noindex, nofollow">
+<head><meta name="robots" content="noindex, nofollow"><script>(function(d){d.classList.add("js");try{if(d.dataset.intro&&!sessionStorage.getItem("mm_i")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("intro-on");sessionStorage.setItem("mm_i","1")}}catch(x){}})(document.documentElement)</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reklama byudjeti: oyiga qancha ajratishni sotuv rejasidan qanday hisoblash mumkin | Musaev Marketing</title>
@@ -221,9 +221,193 @@ h1{line-height:1.08}
 .usp-card h3{color:#fff;font-size:22px;margin-top:10px}.usp-card p{margin:0;color:#cfc9bc}
 .usp-n{font:400 15px Forum,Georgia,serif;color:var(--saf);letter-spacing:.1em}
 @media (max-width:860px){.usp{grid-template-columns:1fr}}
+
+/* ===== UX 2026-11-15: движение, квиз, помощник, формы, блог ===== */
+[hidden]{display:none!important}
+:root{--h0:0s;--ease:cubic-bezier(.2,.7,.2,1)}
+.intro-on{--h0:1.35s}
+.top{transition:box-shadow .3s}.top.scrolled{box-shadow:0 8px 28px rgba(0,0,0,.07)}
+.nav a{position:relative}.nav a.on{color:var(--ink)}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:1px;background:var(--saf);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after,.nav a[aria-current]::after{transform:scaleX(1)}
+.btn{transition:transform .2s var(--ease),background .2s,color .2s,border-color .2s}
+.btn:active{transform:translateY(1px) scale(.985)}
+#realestate .btn:hover,.icta .btn:hover{background:#e0bd62}
+/* intro */
+.intro{display:none}
+.intro-on .intro{display:grid;place-items:center;position:fixed;inset:0;z-index:100;background:#0d0d0d;cursor:pointer;animation:introOut .75s cubic-bezier(.7,0,.2,1) 1.3s forwards}
+.intro.skip{display:none!important}
+.intro-in{display:grid;justify-items:center;gap:16px}
+.intro img{width:150px;height:auto;clip-path:inset(100% 0 0 0);animation:introMark .8s var(--ease) .1s forwards}
+.intro-line{width:190px;height:1px;background:#C9A44C;transform:scaleX(0);animation:introLine .7s var(--ease) .5s forwards}
+.intro-t{font:400 14px Forum,Georgia,serif;letter-spacing:.45em;padding-left:.45em;text-transform:uppercase;color:#eeeae0;opacity:0;animation:fadeIn .6s .75s forwards}
+@keyframes introMark{to{clip-path:inset(0 0 0 0)}}
+@keyframes introLine{to{transform:scaleX(1)}}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes introOut{to{transform:translateY(-100%);visibility:hidden}}
+/* hero */
+.hero{position:relative;isolation:isolate}
+.peaks{position:absolute;z-index:-1;right:-1%;top:24px;width:min(560px,50%);height:auto;fill:none;stroke:var(--saf);stroke-width:1.1;opacity:.6;pointer-events:none;will-change:transform}
+.peaks path{stroke-dasharray:640;stroke-dashoffset:640;animation:draw 2.4s cubic-bezier(.45,0,.2,1) calc(var(--h0) + .2s) forwards}
+.peaks path:nth-child(2){animation-delay:calc(var(--h0) + .45s)}.peaks path:nth-child(3){animation-delay:calc(var(--h0) + .7s)}
+.peaks .base{stroke-width:.6;animation-delay:calc(var(--h0) + 1s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+html:not(.js) .peaks path{stroke-dashoffset:0;animation:none}
+.js .hero h1 .w{display:inline-block;opacity:0;transform:translateY(.42em);animation:wIn .9s var(--ease) forwards;animation-delay:calc(var(--h0) + .12s + var(--i) * .055s)}
+.js .hero .eyebrow,.js .hero .lead,.js .hero .cta,.js .hero .proof,.js .hero .quote{opacity:0;animation:up .9s var(--ease) forwards}
+.js .hero .eyebrow{animation-delay:var(--h0)}.js .hero .lead{animation-delay:calc(var(--h0) + .45s)}
+.js .hero .cta{animation-delay:calc(var(--h0) + .6s)}.js .hero .proof{animation-delay:calc(var(--h0) + .75s)}.js .hero .quote{animation-delay:calc(var(--h0) + .6s)}
+@keyframes wIn{to{opacity:1;transform:none}}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* ticker */
+.ticker{overflow:hidden;border-block:1px solid var(--line);padding:18px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.tk{display:flex;width:max-content;animation:tick 48s linear infinite}
+.ticker:hover .tk{animation-play-state:paused}
+.tk span{display:inline-flex;align-items:center;gap:30px;padding-right:30px;font:400 clamp(20px,2.4vw,28px) Forum,Georgia,serif;white-space:nowrap;color:var(--ink)}
+.tk span::after{content:"";width:7px;height:7px;background:var(--saf);transform:rotate(45deg)}
+@keyframes tick{to{transform:translateX(-33.3333%)}}
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .85s var(--ease) var(--d,0ms),transform .85s var(--ease) var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+/* section index */
+main.idx{counter-reset:sec}
+main.idx>section>h2:first-child::before,main.idx>section>div:first-child>h2:first-child::before,main.idx .quiz-head h2::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);display:block;font:500 12.5px Onest,sans-serif;letter-spacing:.24em;color:var(--teal);margin-bottom:14px}
+#realestate h2::before,.quiz h2::before{color:#D4B262!important}
+/* usp spotlight */
+.usp-card{position:relative;overflow:hidden;transition:transform .3s var(--ease)}
+.usp-card:hover{transform:translateY(-3px)}
+.usp-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(380px circle at var(--mx,-500px) var(--my,-500px),rgba(212,178,98,.18),transparent 62%)}
+.usp-card>*{position:relative}
+/* steps as editorial columns */
+@media (min-width:861px){.steps{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
+.steps li{padding:22px 20px 20px;border-top:3px solid var(--saf)}
+.steps li::before{position:static;display:block;width:auto;height:auto;border-radius:0;background:none!important;color:var(--saf)!important;font:400 42px/1 Forum,Georgia,serif;margin-bottom:14px;content:counter(s,decimal-leading-zero)}
+.steps strong{display:block;font:400 21px/1.2 Forum,Georgia,serif;margin-bottom:6px}
+/* forms */
+.fl{position:relative}
+.lead-form .fl label{display:block;position:absolute;left:15px;top:17px;margin:0;font-size:15.5px;font-weight:500;color:var(--muted);pointer-events:none;transition:top .2s var(--ease),font-size .2s var(--ease)}
+.lead-form .fl input{padding:24px 14px 8px;min-height:58px}
+.fl input:focus+label,.fl input:not(:placeholder-shown)+label{top:7px;font-size:12px;font-weight:600;letter-spacing:.02em}
+.lead-form input:focus{outline:none;border-color:var(--saf);box-shadow:0 0 0 3px color-mix(in srgb,var(--saf) 28%,transparent)}
+.ferr{display:block;color:#c0392b;font-size:13px;margin-top:6px}.ferr:empty{display:none}
+.lead-form.bad [name=phone]{border-color:#c0392b;animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.fnote{margin:0;font-size:12.5px;color:var(--muted)}
+.btn.load{pointer-events:none;opacity:.8}
+.btn.load::after{content:"";width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fdone{display:grid;justify-items:center;text-align:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:30px 22px;animation:up .5s var(--ease)}
+.fdone svg{width:56px;height:56px;fill:none;stroke:var(--saf);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fdone circle{stroke-dasharray:152;stroke-dashoffset:152;animation:dash .6s var(--ease) forwards}
+.fdone path{stroke-dasharray:40;stroke-dashoffset:40;animation:dash .4s var(--ease) .5s forwards}
+@keyframes dash{to{stroke-dashoffset:0}}
+.fdone b{font:400 24px Forum,Georgia,serif}.fdone p{margin:0 0 6px;color:var(--muted)}
+/* quiz */
+html:not(.js) .quiz-sec{display:none}
+.quiz{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:44px;background:#0d0d0d;color:#eeeae0;border-radius:24px;padding:clamp(24px,4.2vw,52px);border-top:3px solid var(--saf);position:relative;overflow:hidden;isolation:isolate}
+.quiz::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,20%) var(--my,90%),rgba(212,178,98,.12),transparent 65%)}
+.quiz .peaks{z-index:-1;left:-40px;right:auto;top:auto;bottom:-46px;width:360px;opacity:.28}
+.quiz .peaks path{animation:none;stroke-dashoffset:0}
+.quiz h2{color:#fff}.quiz .muted{color:#b9b3a6}
+.quiz-body{min-height:360px}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:#b9b3a6;min-height:34px}
+.quiz-back,.quiz-restart{background:none;border:0;color:#D4B262;font:inherit;font-weight:600;cursor:pointer;padding:6px 0}
+.quiz-restart{margin-top:12px}
+.quiz-bar{height:2px;background:rgba(255,255,255,.12);margin:8px 0 24px;overflow:hidden}
+.quiz-bar span{display:block;height:100%;background:var(--saf);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.qz-step{border:0;padding:0;margin:0;min-width:0;animation:stepIn .45s var(--ease)}
+.qz-step legend{font:400 clamp(22px,2.6vw,29px)/1.2 Forum,Georgia,serif;color:#fff;margin-bottom:18px;padding:0}
+.opts{display:grid;gap:10px}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid rgba(255,255,255,.16);border-radius:12px;transition:border-color .2s,background .2s,transform .25s var(--ease)}
+.opt span::before{content:"";width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);flex-shrink:0;transition:all .2s}
+.opt:hover span{border-color:var(--saf);transform:translateX(4px)}
+.opt input:checked+span{border-color:var(--saf);background:rgba(212,178,98,.12)}
+.opt input:checked+span::before{border-color:var(--saf);background:var(--saf);box-shadow:inset 0 0 0 3px #0d0d0d}
+.opt input:focus-visible+span{outline:3px solid var(--saf);outline-offset:2px}
+.qz-res{animation:stepIn .5s var(--ease)}
+.qz-res h3{font-size:clamp(22px,2.4vw,29px);color:#fff;outline:none}
+.qz-recs li{color:#e6e1d6}
+.qz-ft{font-weight:600;color:#fff;margin:18px 0 10px}
+.quiz .lead-form{background:#171716;border-color:#2c2b28}
+.quiz .lead-form input{background:#0d0d0d;color:#f2efe8;border-color:#34322e}
+.quiz .fl label,.quiz .fnote{color:#a9a395}
+.quiz .lead-form .btn{background:var(--saf);color:#0d0d0d}.quiz .lead-form .btn:hover{background:#e0bd62}
+.quiz .fdone{background:#171716;border-color:#2c2b28;color:#eeeae0}.quiz .fdone p{color:#b9b3a6}
+@keyframes stepIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (max-width:860px){.quiz{grid-template-columns:1fr;gap:18px}.quiz-body{min-height:0}.quiz .peaks{width:240px;bottom:auto;top:-30px;left:auto;right:-50px}}
+/* helper */
+.hlp{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom));z-index:40;font-size:15px}
+.hlp-btn{display:flex;align-items:center;gap:10px;background:#0d0d0d;color:#f2efe8;border:1px solid #2c2b28;border-radius:999px;padding:9px 18px 9px 10px;font:600 15px Onest,sans-serif;cursor:pointer;box-shadow:0 12px 32px rgba(0,0,0,.22);transition:transform .25s var(--ease)}
+.hlp-btn:hover{transform:translateY(-2px)}
+.hlp.open .hlp-btn{visibility:hidden}
+.hlp-ic{width:30px;height:30px;border-radius:50%;background:var(--saf);position:relative;flex-shrink:0}
+.hlp-ic::before{content:"?";position:absolute;inset:0;display:grid;place-items:center;color:#0d0d0d;font:400 19px Forum,Georgia,serif}
+.hlp-ic::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--saf);animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{from{transform:scale(.9);opacity:.9}to{transform:scale(1.55);opacity:0}}
+.hlp-p{position:absolute;right:0;bottom:0;width:min(390px,calc(100vw - 32px));max-height:min(640px,calc(100vh - 100px));display:flex;flex-direction:column;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;box-shadow:0 28px 70px rgba(0,0,0,.28);overflow:hidden;transform-origin:bottom right;animation:pop .35s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.hlp-h{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 18px;background:#0d0d0d;color:#f2efe8;border-bottom:2px solid var(--saf)}
+.hlp-h img{height:22px;width:auto}
+.hlp-h div{flex:1;display:grid;line-height:1.3}.hlp-h b{font:400 16px Forum,Georgia,serif;letter-spacing:.08em;text-transform:uppercase}.hlp-h small{color:#b3ada1;font-size:12.5px}
+.hlp-x{background:none;border:0;color:#f2efe8;font-size:26px;line-height:1;cursor:pointer;width:38px;height:38px;border-radius:10px}
+.hlp-x:hover{background:#222}
+.hlp-log{padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;flex:1;min-height:90px}
+.bub{margin:0;background:var(--bg);border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:10px 13px;max-width:92%;font-size:14.5px;line-height:1.5;animation:bubIn .3s var(--ease)}
+.bub.me{align-self:flex-end;background:#0d0d0d;color:#f2efe8;border-color:#0d0d0d;border-radius:14px 14px 4px 14px}
+.bub.typing{display:flex;gap:4px;width:fit-content;padding:13px 14px}
+.bub.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:dot 1s infinite}
+.bub.typing i:nth-child(2){animation-delay:.15s}.bub.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{opacity:.3;transform:none}50%{opacity:1;transform:translateY(-3px)}}
+@keyframes bubIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hlp-qs{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px;max-height:190px;overflow-y:auto}
+.hq{background:var(--card);border:1px solid color-mix(in srgb,var(--saf) 60%,var(--line));color:var(--ink);border-radius:999px;padding:7px 13px;font:500 13.5px/1.35 Onest,sans-serif;cursor:pointer;text-align:left}
+.hq:hover{background:color-mix(in srgb,var(--saf) 16%,var(--card))}
+.hlp-more{margin:0;padding:0 16px 10px;font-size:13.5px;color:var(--muted)}
+.hlp-f{display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px 16px;border-top:1px solid var(--line)}
+.hlp-f .btn{flex:1}
+.hlp-quiz{flex-basis:100%;text-align:center;font-size:14px;font-weight:600;color:var(--teal);text-decoration:none;padding-top:4px}
+@media (max-width:640px){.hlp{bottom:calc(78px + env(safe-area-inset-bottom));right:12px}.hlp-t{display:none}.hlp-btn{padding:8px}
+.hlp-p{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));width:auto;max-height:82vh}}
+/* blog */
+.progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:25;pointer-events:none}
+.progress span{display:block;height:100%;background:var(--saf);transform:scaleX(0);transform-origin:left}
+.post-grid{display:grid;grid-template-columns:minmax(0,740px) 230px;gap:56px;justify-content:center;align-items:start}
+.post-grid .post{margin:0}
+.toc-side{position:sticky;top:96px;padding-top:140px}
+.toc p{font:600 12px Onest,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.toc a{display:block;padding:6px 0 6px 14px;margin-left:-1px;border-left:2px solid transparent;color:var(--muted);text-decoration:none;font-size:14px;line-height:1.4;transition:color .2s,border-color .2s}
+.toc a:hover{color:var(--ink)}.toc a.on{color:var(--ink);border-left-color:var(--saf)}
+.toc-m{display:none}
+@media (max-width:1100px){.post-grid{grid-template-columns:minmax(0,1fr)}.post-grid .post{margin-inline:auto}.toc-side{display:none}
+.toc-m{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:0 0 26px}
+.toc-m summary{cursor:pointer;font-weight:700}.toc-m ol{margin:10px 0 2px;padding-left:20px}.toc-m li{margin:.3em 0;font-size:15.5px!important}}
+.post .meta{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center}
+.post .meta a{color:var(--teal);font-weight:600;text-decoration:none}
+.post h2{scroll-margin-top:90px}
+.icta{display:flex;gap:20px;align-items:center;justify-content:space-between;background:#0d0d0d;color:#eeeae0;border-radius:var(--r);padding:22px 24px;margin:38px 0;border-left:3px solid var(--saf)}
+.icta b{font:400 21px Forum,Georgia,serif;color:#fff;display:block;margin-bottom:4px}
+.icta p{margin:0;font-size:15px!important;color:#cfc9bc}
+.icta .btn{background:var(--saf);color:#0d0d0d;flex-shrink:0;white-space:nowrap}
+@media (max-width:640px){.icta{flex-direction:column;align-items:flex-start}.icta .btn{width:100%}}
+.bsearch{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 22px}
+.bsearch input{flex:1 1 320px;font:inherit;color:var(--ink);min-height:54px;padding:14px 16px 14px 46px;border:1px solid var(--line);border-radius:12px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A44C' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") 15px center/19px no-repeat}
+.bsearch input:focus{outline:none;border-color:var(--saf);box-shadow:0 0 0 3px color-mix(in srgb,var(--saf) 25%,transparent)}
+.bcount{color:var(--muted);font-size:14px}
+.bnone{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;animation-delay:0s!important;animation-iteration-count:1!important}.tk{animation:none!important}}
+@media print{.hlp,.mbar,.progress,.intro,.ticker{display:none!important}}
+/* header breathing room */
+.bar{gap:26px}
+@media (min-width:861px) and (max-width:1420px){.logo span{display:none}.nav{gap:16px}}
+.post h2{font-size:clamp(25px,3.2vw,31px);margin-top:1.7em}.post h3{font-size:19px;margin-top:1.4em}
+.post-grid>.post{width:100%;min-width:0;max-width:740px}
 </style><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Reklama byudjeti: oyiga qancha ajratishni sotuv rejasidan qanday hisoblash mumkin", "description": "Reklama byudjeti qanday hisoblanadi: sotuv rejasidan orqaga hisob, ikki haftalik sinov, 70/20/10 taqsimot va byudjetni qachon oshirish. Quruvchi misolida.", "datePublished": "2026-11-11", "dateModified": "2026-11-14", "inLanguage": "uz", "mainEntityOfPage": "https://musaevmarketing.uz/blog/reklama-byudjeti/", "author": {"@type": "Person", "name": "Elbek Musaev"}, "publisher": {"@id": "https://musaevmarketing.uz/#org"}, "about": "reklama byudjeti"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Musaev Marketing", "item": "https://musaevmarketing.uz/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://musaevmarketing.uz/blog/"}, {"@type": "ListItem", "position": 3, "name": "Reklama byudjeti: oyiga qancha ajratishni sotuv rejasidan qanday hisoblash mumkin", "item": "https://musaevmarketing.uz/blog/reklama-byudjeti/"}]}]</script>
-</head><body><header class="top"><div class="wrap bar"><a class="logo" href="/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/" aria-current=page>Blog</a><a href="/#contact">Aloqa</a></nav><a class="btn sm hcta" href="/#contact">Bepul tekshiruv</a><div class="langs"><a href="/blog/" aria-current=page>UZ</a><a href="/ru/blog/">RU</a><a href="/en/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/" aria-current=page>Blog</a><a href="/#contact">Aloqa</a></nav></details></div></header><main class="wrap"><article class="post"><p class="crumbs"><a href="/">Musaev Marketing</a> / <a href="/blog/">Blog</a></p><h1>Reklama byudjeti: oyiga qancha ajratishni sotuv rejasidan qanday hisoblash mumkin</h1><p class="meta">Elbek Musaev, Musaev Marketing asoschisi · 2026-11-11</p><p>Ko‘p biznesda reklama byudjeti oy oxirida kassada qancha pul qolganiga qarab belgilanadi. Pul ko‘p qolsa reklama yoqiladi, kam qolsa o‘chiriladi, va keyingi oy hammasi boshidan boshlanadi. Bunday byudjet bilan reklama hech qachon oxirigacha sinab ko‘rilmaydi, «Instagram bizga ishlamaydi» degan xulosa esa tekshirilmagan raqamlarga tayanadi. Uni hisoblashning ishonchliroq yo‘li sotuv rejasidan orqaga qarab yuradi.</p>
-<h2>Reklama byudjetini sotuv rejasidan hisoblash</h2>
+</head><body><header class="top"><div class="wrap bar"><a class="logo" href="/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/" aria-current=page>Blog</a><a href="/#contact">Aloqa</a></nav><a class="btn sm hcta" href="/#contact">Bepul tekshiruv</a><div class="langs"><a href="/blog/" aria-current=page>UZ</a><a href="/ru/blog/">RU</a><a href="/en/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/" aria-current=page>Blog</a><a href="/#contact">Aloqa</a></nav></details></div></header><div class="progress" aria-hidden="true"><span></span></div><main class="wrap"><div class="post-grid"><article class="post"><p class="crumbs"><a href="/">Musaev Marketing</a> / <a href="/blog/">Blog</a></p><h1>Reklama byudjeti: oyiga qancha ajratishni sotuv rejasidan qanday hisoblash mumkin</h1><p class="meta"><span>Elbek Musaev, Musaev Marketing asoschisi</span><span>2026-11-14</span><span>4 daqiqa o‘qish</span><a href="https://t.me/share/url?url=https%3A//musaevmarketing.uz/blog/reklama-byudjeti/&amp;text=Reklama%20byudjeti%3A%20oyiga%20qancha%20ajratishni%20sotuv%20rejasidan%20qanday%20hisoblash%20mumkin" target="_blank" rel="noopener">Telegram’da ulashish</a></p><details class="toc-m"><summary>Mundarija</summary><ol><li><a href="#s1">Reklama byudjetini sotuv rejasidan hisoblash</a></li><li><a href="#s2">Lid narxini qayerdan bilish mumkin</a></li><li><a href="#s3">Quruvchi misolida: byudjetdan oldin video va sotuv</a></li><li><a href="#s4">Byudjetni qanday taqsimlash</a></li><li><a href="#s5">Byudjetga yana nima kiradi</a></li><li><a href="#s6">Qachon oshirish kerak</a></li><li><a href="#s7">Ko‘p beriladigan savollar</a></li></ol></details><p>Ko‘p biznesda reklama byudjeti oy oxirida kassada qancha pul qolganiga qarab belgilanadi. Pul ko‘p qolsa reklama yoqiladi, kam qolsa o‘chiriladi, va keyingi oy hammasi boshidan boshlanadi. Bunday byudjet bilan reklama hech qachon oxirigacha sinab ko‘rilmaydi, «Instagram bizga ishlamaydi» degan xulosa esa tekshirilmagan raqamlarga tayanadi. Uni hisoblashning ishonchliroq yo‘li sotuv rejasidan orqaga qarab yuradi.</p>
+<h2 id="s1">Reklama byudjetini sotuv rejasidan hisoblash</h2>
 <p>Hisob «oyiga nechta sotuv kerak» degan savoldan boshlanadi va besh qadamdan o‘tadi:</p>
 <ol>
 <li>Oyiga nechta shartnoma kerak.</li>
@@ -234,17 +418,17 @@ h1{line-height:1.08}
 </ol>
 <p>Masalan, quruvchiga oyiga 10 ta shartnoma kerak. Uning sotuv bo‘limida har 10 ta tashrifdan bittasi shartnomaga aylanadi, demak oyiga 100 ta tashrif kerak. Har 10 ta liddan bittasi ofisga kelsa, 1 000 ta lid kerak bo‘ladi. Oylik byudjet 1 000 ni bitta lid narxiga ko‘paytirganingizga teng.</p>
 <p>Bu hisobdagi eng og‘ir raqamlar sotuv bo‘limida turadi. Menejerlar har 10 ta liddan ikkitasini ofisga olib kela boshlasa, xuddi shu 10 ta shartnoma uchun reklamaga ketadigan pul ikki baravar kamayadi. Reklamaga pul qo‘shishdan oldin menejerlar lidlarga qanchada javob berishini va suhbatni nima bilan tugatishini tekshirib ko‘ring.</p>
-<h2>Lid narxini qayerdan bilish mumkin</h2>
+<h2 id="s2">Lid narxini qayerdan bilish mumkin</h2>
 <p>Reklama hali berilmagan bo‘lsa, lid narxini faqat sinov ko‘rsatadi. Boshqa biznesdan eshitilgan raqamga tayanmang: Farg‘onada bir xil auditoriyaga ikki xil video bilan berilgan reklamaning lid narxi bir necha baravar farq qilishi mumkin.</p>
 <p>Sinov uchun odatda ikki hafta yetadi. Shu davrda 3–4 xil video yoki rasm va 2 xil matn sinab ko‘riladi. Ikki haftadan keyin qaysi biri arzonroq va sifatliroq lid berayotgani ko‘rinadi, byudjetning asosiy qismi shunga o‘tkaziladi.</p>
 <p>Lid sifatini ham yozib boring. Arzon lidlarning yarmi telefonni ko‘tarmasa, ular aslida qimmat. Menejer har bir lidga qisqa belgi qo‘ysin: gaplashdik, qiziqdi, ofisga yozildi.</p>
-<h2>Quruvchi misolida: byudjetdan oldin video va sotuv</h2>
+<aside class="icta"><div><b>Sotuv bo‘limingizni bepul tekshiramiz</b><p>Xaridor sifatida yozamiz va javobni qancha kutganimizni o‘lchaymiz. Natijani raqamlar bilan ko‘rsatamiz.</p></div><a class="btn" href="/#audit">Tekshiruvga yozilish</a></aside><h2 id="s3">Quruvchi misolida: byudjetdan oldin video va sotuv</h2>
 <p>Farg‘ona vodiysidagi bir turar joy majmuasi bilan ishlaganimizda, yangi videolar va aniq taklif hisobiga Facebook’dagi lid narxi taxminan 2–3 baravar pasaydi. Shu bilan birga sotuv bo‘limidagi menejerlar ikkitadan o‘ntaga ko‘paydi, CRM va qayta qo‘ng‘iroqlar tartibi yo‘lga qo‘yildi. Ofisga tashriflar oyiga 88 tadan 1 022 tagacha o‘sdi.</p>
 <p>Lidlar ko‘paygani bilan ularni qabul qiladigan odam bo‘lmaganida, pulning katta qismi javobsiz qolgan so‘rovlarga ketgan bo‘lardi. Byudjetni oshirishdan oldin videoni almashtirib ko‘rish va sotuv bo‘limini tekshirish ko‘pincha arzonroq yo‘l bo‘lib chiqadi.</p>
-<h2>Byudjetni qanday taqsimlash</h2>
+<h2 id="s4">Byudjetni qanday taqsimlash</h2>
 <table><tr><th>Qism</th><th>Ulushi</th><th>Nima uchun</th></tr><tr><td>Ishlayotgan reklamalar</td><td>Taxminan 70%</td><td>Lid narxi va sifati tekshirilgan e’lonlar</td></tr><tr><td>Yangi sinovlar</td><td>Taxminan 20%</td><td>Yangi video, yangi taklif, yangi auditoriya</td></tr><tr><td>Qayta ko‘rsatish</td><td>Taxminan 10%</td><td>Profilga kirgan, videoni ko‘rgan, lekin yozmaganlar</td></tr></table>
 <p>Bu nisbatni sharoitga qarab o‘zgartirsa bo‘ladi. U sizni bitta e’longa bog‘lanib qolishdan saqlaydi. Har qanday reklama vaqt o‘tib charchaydi va lid narxi o‘sa boshlaydi, uning o‘rnini egallaydigan e’lon esa shu paytgacha sinalgan bo‘lishi kerak.</p>
-<h2>Byudjetga yana nima kiradi</h2>
+<h2 id="s5">Byudjetga yana nima kiradi</h2>
 <p>Reklama kabinetiga to‘lanadigan pul xarajatning bir qismi xolos. Hisobga quyidagilarni ham qo‘shing:</p>
 <ul>
 <li>video va rasm tayyorlash: ssenariy, suratga olish, montaj;</li>
@@ -252,25 +436,80 @@ h1{line-height:1.08}
 <li>so‘rovlarga javob beradigan menejerlarning vaqti.</li>
 </ul>
 <p>Reklamaga katta pul ajratib, videoni telefonda shoshib olsangiz yoki lidlarga javob beradigan odam bo‘lmasa, byudjet kuyib ketadi va buni faqat oy oxirida ko‘rasiz.</p>
-<h2>Qachon oshirish kerak</h2>
+<h2 id="s6">Qachon oshirish kerak</h2>
 <p>Byudjetni ikki shart bajarilganda oshirish mantiqli: lid narxi bir necha hafta barqaror tursa va sotuv bo‘limi kelayotgan hamma lidga o‘z vaqtida javob bera olsa. Birdaniga ikki-uch baravar oshirmang. Har 3–4 kunda 20–30% dan qo‘shib boring, shunda algoritm qayta o‘rganish bosqichiga tushib qolmaydi. Reklamani sozlash tartibi <a href="/blog/instagramda-target-yoqish/">Instagram’da target yoqish</a> maqolasida bor, lid nima ekani va uni qanday hisoblash haqida esa <a href="/blog/lid-nima/">lid nima</a> maqolasida yozganmiz.</p>
-<h2>Ko‘p beriladigan savollar</h2>
+<h2 id="s7">Ko‘p beriladigan savollar</h2>
 <h3>Kichik biznes uchun reklama byudjeti qancha bo‘lishi kerak?</h3>
 <p>Bitta to‘g‘ri summa yo‘q. Ikki haftalik sinovdan boshlang, lid narxini bilib oling va keyin sotuv rejangizdan kerakli byudjetni hisoblang.</p>
 <h3>Reklama pulini kim to‘laydi: agentlikmi yoki biznes?</h3>
 <p>Odatda biznes reklamani Meta’ga o‘zi to‘laydi, agentlik xizmati alohida hisoblanadi. Shunda qancha pul reklamaga, qanchasi ishga ketganini aniq ko‘rasiz.</p>
 <h3>Reklama natija bermasa, byudjetni oshirish kerakmi?</h3>
-<p>Yo‘q. Avval video, taklif va sotuv bo‘limining javob tezligini tekshiring. Pul qo‘shish ishlamayotgan e’lonni ishlatib yubormaydi.</p><section class="band"><h2>Akkauntingizni bepul ko‘rib chiqamiz</h2><p>Instagram, xaritadagi kartochka va so‘rovga qancha tez javob berilishini tekshiramiz. Natijani ro‘yxat qilib beramiz: nimani birinchi tuzatish kerak.</p><div class="cta"><a class="btn" href="tel:+998919993331">Qo‘ng‘iroq qilish</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div></section></article><section><h2>Yana o‘qing</h2><div class="posts"><a class="card" href="/blog/smm-nima/"><span class="tag">smm nima</span><h3>SMM nima va biznes egasi undan nimani kutishi kerak</h3></a><a class="card" href="/blog/target-reklama-nima/"><span class="tag">target reklama nima</span><h3>Target reklama nima va Instagramda uni qanday to‘g‘ri qo‘yish kerak</h3></a><a class="card" href="/blog/kontent-reja-tuzish/"><span class="tag">kontent reja tuzish</span><h3>Kontent reja tuzish: Instagram uchun bir oylik rejani qanday yozish kerak</h3></a></div></section></main><footer class="wrap foot"><picture><source srcset="/assets/mm-full-w.png" media="(prefers-color-scheme: dark)"><img class="foot-logo" src="/assets/mm-full-b.png" width="76" height="64" alt="Musaev Marketing" loading="lazy"></picture><div class="cols"><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/">Blog</a><a href="/#contact">Aloqa</a><a href="https://t.me/+998919993331">Telegram</a><a href="https://www.instagram.com/musaev_marketing/">Instagram</a></div><p>© 2023–2026 Musaev Marketing · Farg‘ona · Kontentdan natijaga.</p></footer><div class="mbar"><a class="btn" href="tel:+998919993331">Qo‘ng‘iroq</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div><script>(function(){var K={"ym": "", "endpoint": "", "tg": "https://t.me/+998919993331"};
+<p>Yo‘q. Avval video, taklif va sotuv bo‘limining javob tezligini tekshiring. Pul qo‘shish ishlamayotgan e’lonni ishlatib yubormaydi.</p><section class="band"><h2>Akkauntingizni bepul ko‘rib chiqamiz</h2><p>Instagram, xaritadagi kartochka va so‘rovga qancha tez javob berilishini tekshiramiz. Natijani ro‘yxat qilib beramiz: nimani birinchi tuzatish kerak.</p><div class="cta"><a class="btn" href="tel:+998919993331">Qo‘ng‘iroq qilish</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div></section></article><aside class="toc-side"><nav class="toc" aria-label="Mundarija"><p>Mundarija</p><ol><li><a href="#s1">Reklama byudjetini sotuv rejasidan hisoblash</a></li><li><a href="#s2">Lid narxini qayerdan bilish mumkin</a></li><li><a href="#s3">Quruvchi misolida: byudjetdan oldin video va sotuv</a></li><li><a href="#s4">Byudjetni qanday taqsimlash</a></li><li><a href="#s5">Byudjetga yana nima kiradi</a></li><li><a href="#s6">Qachon oshirish kerak</a></li><li><a href="#s7">Ko‘p beriladigan savollar</a></li></ol></nav></aside></div><section><h2>Yana o‘qing</h2><div class="posts"><a class="card" href="/blog/target-reklama-nima/"><span class="tag">target reklama nima</span><h3>Target reklama nima va Instagramda uni qanday to‘g‘ri qo‘yish kerak</h3></a><a class="card" href="/blog/sotuv-menejeri-kim/"><span class="tag">sotuv menejeri kim</span><h3>Sotuv menejeri kim: vazifalari, ko‘rsatkichlari va ishini qanday tekshirish</h3></a><a class="card" href="/blog/reklama-agentligi/"><span class="tag">reklama agentligi</span><h3>Reklama agentligi: u nima qiladi, qanday turlari bor va shartnomadan oldin nimani so‘rash kerak</h3></a></div></section></main><footer class="wrap foot"><picture><source srcset="/assets/mm-full-w.png" media="(prefers-color-scheme: dark)"><img class="foot-logo" src="/assets/mm-full-b.png" width="76" height="64" alt="Musaev Marketing" loading="lazy"></picture><div class="cols"><a href="/quruvchilar/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/">Blog</a><a href="/#contact">Aloqa</a><a href="https://t.me/+998919993331">Telegram</a><a href="https://www.instagram.com/musaev_marketing/">Instagram</a></div><p>© 2023–2026 Musaev Marketing · Farg‘ona · Kontentdan natijaga.</p></footer><div class="mbar"><a class="btn" href="tel:+998919993331">Qo‘ng‘iroq</a><a class="btn ghost" href="https://t.me/+998919993331">Telegram</a></div><div class="hlp"><button type="button" class="hlp-btn" aria-expanded="false" aria-controls="hlp-p"><span class="hlp-ic" aria-hidden="true"></span><span class="hlp-t">Savol bormi?</span></button><div class="hlp-p" id="hlp-p" role="dialog" aria-label="Savol bormi?" hidden><div class="hlp-h"><img src="/assets/mm-mark-w.png" width="44" height="24" alt=""><div><b>Musaev Marketing</b><small>Ko‘p beriladigan savollar</small></div><button type="button" class="hlp-x" aria-label="Yopish">×</button></div><div class="hlp-log" aria-live="polite"><p class="bub">Assalomu alaykum. Savolni tanlang yoki bizga to‘g‘ridan to‘g‘ri yozing.</p></div><div class="hlp-qs"><button type="button" class="hq" data-a="Oylik SMM xizmati oyiga 28 mln so‘m turadi: oltita mutaxassis ishlaydi, shartnoma uch oyga. Quruvchilar bilan ishda oyiga 12,5 mln so‘mdan belgilangan to‘lov va sotilgan xonadonlardan foiz olamiz, sotuv menejerlari maoshini o‘zimiz to‘laymiz. Reklama byudjeti alohida.">Farg‘onada SMM xizmati qancha turadi?</button><button type="button" class="hq" data-a="Biz. Menejerlarni yollaymiz, o‘qitamiz va maoshini to‘laymiz. Xonadon sotilmasa, bu xarajat bizning zararimiz, shuning uchun har bir so‘rov ustida biz ham ishlaymiz.">Sotuv bo‘limini kim yuritadi?</button><button type="button" class="hq" data-a="Farg‘ona vodiysida: Farg‘ona, Marg‘ilon, Qo‘qon, Quvasoy, Namangan va Andijon.">Qaysi shaharlarda ishlaysiz?</button><button type="button" class="hq" data-a="Ko‘rishlar, qamrov va so‘rovlar soni birinchi haftalik hisobotdayoq bo‘ladi. Sotuv taklif, narx va menejer ishiga bog‘liq, shuning uchun so‘rovni sotuv bo‘limida o‘zimiz kutib olamiz va har birini CRM’da kuzatamiz.">Natijani qachon ko‘raman?</button><button type="button" class="hq" data-a="Loyihani suratga olamiz, reklamani yo‘lga qo‘yamiz va sotuv bo‘limiga so‘rov qanday yetib borayotganini ko‘ramiz: qancha vaqtda javob berilyapti va mijoz ofisga taklif qilinyaptimi. Shundan keyin menejerlar uchun skript yozamiz.">Quruvchilar bilan qanday ishlaysiz?</button><button type="button" class="hq" data-a="AI-agentlar kontent-reja qoralamasi, raqobatchilar tahlili, matn variantlari va hisobotlarni tayyorlaydi. Suratga olish, montaj va yakuniy qaror jamoada qoladi.">Sun’iy intellektdan qanday foydalanasiz?</button><button type="button" class="hq" data-a="Kirmaydi. Reklama byudjetini Meta’ga to‘g‘ridan to‘g‘ri o‘zingiz to‘laysiz, biz uni sozlaymiz va har hafta so‘rov narxini ko‘rsatamiz.">Reklama byudjeti narxga kiradimi?</button></div><p class="hlp-more" hidden>Yana savol bormi? Telegram’da yozing yoki qo‘ng‘iroq qiling.</p><div class="hlp-f"><a class="btn sm" href="https://t.me/+998919993331">Telegram’da yozish</a><a class="btn sm ghost" href="tel:+998919993331">Qo‘ng‘iroq</a><a class="hlp-quiz" href="/#quiz">4 savolda birinchi qadam →</a></div></div></div><script>(function(){var K={"ym": "", "endpoint": "", "tg": "https://t.me/+998919993331"};var D=document.documentElement,RM=matchMedia("(prefers-reduced-motion: reduce)").matches,IO="IntersectionObserver" in window;
 function goal(n){try{if(K.ym&&window.ym)ym(+K.ym,"reachGoal",n);if(window.gtag)gtag("event",n);if(window.fbq)n==="lead"?fbq("track","Lead"):fbq("trackCustom",n)}catch(x){}}
 try{var q=new URLSearchParams(location.search),u={};["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){if(q.get(k))u[k]=q.get(k)});if(Object.keys(u).length)sessionStorage.setItem("mm_utm",JSON.stringify(u))}catch(x){}
 function utm(){try{return JSON.parse(sessionStorage.getItem("mm_utm")||"{}")}catch(x){return{}}}
+function $$(s,r){return[].slice.call((r||document).querySelectorAll(s))}
+var it=document.querySelector(".intro");if(it)it.addEventListener("click",function(){it.classList.add("skip")});
 document.addEventListener("click",function(ev){var a=ev.target.closest("a");if(a){var h=a.getAttribute("href")||"";if(h.indexOf("tel:")===0)goal("call");else if(h.indexOf("t.me")>-1)goal("telegram");else if(h.indexOf("instagram.com")>-1)goal("instagram")}
 var b=ev.target.closest("button.reel");if(b){var f=document.createElement("iframe");f.src="https://www.instagram.com/reel/"+b.dataset.reel+"/embed/";f.title=b.getAttribute("aria-label");f.setAttribute("allowtransparency","true");f.setAttribute("scrolling","no");b.replaceWith(f);goal("video")}});
-document.querySelectorAll(".calc").forEach(function(c){function r(){var g=function(k){return Math.max(+c.querySelector('[data-c="'+k+'"]').value||0,0)};var v=Math.ceil(g("apt")*g("v2d"));var l=g("l2v")>0?Math.ceil(v*100/g("l2v")):0;c.querySelector('[data-o="visits"]').textContent=v.toLocaleString("ru-RU");c.querySelector('[data-o="leads"]').textContent=l.toLocaleString("ru-RU")}c.addEventListener("input",r);r()});
-document.querySelectorAll(".lead-form").forEach(function(f){f.addEventListener("submit",function(ev){ev.preventDefault();var d=Object.fromEntries(new FormData(f)),m=f.querySelector(".form-msg");
-if(!(d.phone||"").replace(/\D/g,"").length){m.textContent=f.dataset.err;f.phone.focus();return}
-d.page=location.pathname;d.utm=utm();goal("lead");
-var txt=f.dataset.prefix+"\n"+[d.name,d.project,d.phone].filter(Boolean).join("\n")+"\n"+location.href;
-function fb(){m.textContent=f.dataset.fallback;try{navigator.clipboard.writeText(txt)}catch(x){}setTimeout(function(){location.href=K.tg},1200)}
-if(K.endpoint){fetch(K.endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;m.textContent=f.dataset.ok;f.reset()}).catch(fb)}else fb()})});
+/* header, progress, parallax */
+var hd=document.querySelector(".top"),pg=document.querySelector(".progress span"),art=document.querySelector(".post"),px=document.querySelector(".hero .peaks");
+function onS(){var y=scrollY;if(hd)hd.classList.toggle("scrolled",y>8);
+if(pg&&art){var r=art.getBoundingClientRect(),h=r.height-innerHeight,p=h>0?Math.min(Math.max(-r.top/h,0),1):1;pg.style.transform="scaleX("+p+")"}
+if(px&&!RM&&y<1200)px.style.transform="translateY("+(y*.18).toFixed(1)+"px)"}
+addEventListener("scroll",onS,{passive:true});onS();
+/* reveal on scroll */
+if(IO&&!RM){var ro=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;var x=en.target;x.classList.add("in");ro.unobserve(x);setTimeout(function(){x.classList.remove("rv","in");x.style.removeProperty("--d")},1100)})},{rootMargin:"0px 0px -6% 0px",threshold:.06});
+$$("main section>h2,main .card,.usp-card,.steps li,details.q,.slide,.member,.chap,.observe p,.calc,.devs li,.timeline li,.quiz,.icta,.stats .stat,.offer>div,.contact-grid>div,.smm-teaser").forEach(function(x){if(x.closest(".hero,.hlp,.qz-res"))return;var i=x.parentElement?[].indexOf.call(x.parentElement.children,x):0;x.style.setProperty("--d",Math.min(i,5)*70+"ms");x.classList.add("rv");ro.observe(x)})}
+/* count-up numbers */
+function cnt(el){var t=el.textContent,m=t.match(/\d[\d  ]*(?:[.,]\d+)?/);if(!m)return;var raw=m[0].replace(/[  ]+$/,""),dm=raw.match(/([.,])(\d+)$/),dec=dm?dm[2].length:0,v=parseFloat(raw.replace(/[  ]/g,"").replace(",","."));if(!(v>=10)||/^(19|20)\d\d$/.test(raw))return;
+var t0=0;function fmt(x){var s=x.toFixed(dec).split("."),i=s[0].replace(/\B(?=(\d{3})+(?!\d))/g," ");return dec?i+dm[1]+s[1]:i}
+function st(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1300,1),k=1-Math.pow(1-p,3);el.textContent=t.replace(raw,fmt(v*k));if(p<1)requestAnimationFrame(st);else el.textContent=t}requestAnimationFrame(st)}
+if(IO&&!RM){var co=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){co.unobserve(en.target);cnt(en.target)}})},{threshold:.6});$$(".num:not([data-o])").forEach(function(x){co.observe(x)})}
+/* active nav + toc */
+function spy(links){if(!IO||!links.length)return;var o=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+en.target.id)})})},{rootMargin:"-30% 0px -60% 0px"});links.forEach(function(a){var s=document.getElementById(a.getAttribute("href").slice(1));if(s)o.observe(s)})}
+spy($$('.nav a[href^="#"]'));spy($$(".toc a"));
+/* spotlight */
+$$(".usp-card,.quiz").forEach(function(c){c.addEventListener("pointermove",function(ev){var r=c.getBoundingClientRect();c.style.setProperty("--mx",ev.clientX-r.left+"px");c.style.setProperty("--my",ev.clientY-r.top+"px")})});
+/* calculator */
+$$(".calc").forEach(function(c){function r(){var g=function(k){return Math.max(+c.querySelector('[data-c="'+k+'"]').value||0,0)};var v=Math.ceil(g("apt")*g("v2d"));var l=g("l2v")>0?Math.ceil(v*100/g("l2v")):0;c.querySelector('[data-o="visits"]').textContent=v.toLocaleString("ru-RU");c.querySelector('[data-o="leads"]').textContent=l.toLocaleString("ru-RU")}c.addEventListener("input",r);r()});
+/* forms */
+function fph(v){var d=v.replace(/\D/g,"");if(d.indexOf("998")===0)d=d.slice(3);d=d.slice(0,9);var o="+998";if(d.length)o+=" "+d.slice(0,2);if(d.length>2)o+=" "+d.slice(2,5);if(d.length>5)o+="-"+d.slice(5,7);if(d.length>7)o+="-"+d.slice(7,9);return o}
+$$(".lead-form").forEach(function(f){var ph=f.querySelector("[name=phone]"),er=f.querySelector(".ferr");
+function ok(){return ph.value.replace(/\D/g,"").replace(/^998/,"").length===9}
+function bad(t){er.textContent=t;f.classList.remove("bad");if(t){void f.offsetWidth;f.classList.add("bad")}ph.setAttribute("aria-invalid",t?"true":"false")}
+ph.addEventListener("focus",function(){if(!ph.value)ph.value="+998 "});
+ph.addEventListener("blur",function(){if(ph.value.replace(/\D/g,"")==="998")ph.value=""});
+ph.addEventListener("input",function(){var v=fph(ph.value);if(v!==ph.value)ph.value=v;if(er.textContent&&ok())bad("")});
+f.addEventListener("submit",function(ev){ev.preventDefault();if(f.website&&f.website.value)return;if(!ok()){bad(f.dataset.err);ph.focus();return}
+var d=Object.fromEntries(new FormData(f));delete d.website;d.page=location.pathname;d.utm=utm();goal("lead");
+var txt=f.dataset.prefix+"\n"+[d.name,d.project,d.phone,d.answers].filter(Boolean).join("\n")+"\n"+location.href;
+var b=f.querySelector("button[type=submit]");b.disabled=true;b.classList.add("load");
+function done(title,msg,tg){var p=document.createElement("div");p.className="fdone";p.setAttribute("role","status");p.innerHTML='<svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg><b></b><p></p>';p.querySelector("b").textContent=title;p.querySelector("p").textContent=msg;
+if(tg){var a=document.createElement("a");a.className="btn";a.href=K.tg;a.textContent=f.dataset.opentg;a.addEventListener("click",function(){try{navigator.clipboard.writeText(txt)}catch(x){}});p.appendChild(a)}f.replaceWith(p)}
+function fb(){try{navigator.clipboard.writeText(txt)}catch(x){}done(f.dataset.ready,f.dataset.fallback,true);setTimeout(function(){location.href=K.tg},2200)}
+if(K.endpoint){fetch(K.endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw 0;done(f.dataset.okt,f.dataset.ok,false)}).catch(fb)}else fb()})});
+/* quiz */
+$$(".quiz").forEach(function(z){var st=$$(".qz-step",z),T=st.length,i=0,bar=z.querySelector(".quiz-bar span"),cn=z.querySelector(".quiz-count"),bk=z.querySelector(".quiz-back"),res=z.querySelector(".qz-res"),ans={};
+function show(n,focus){i=n;st.forEach(function(s,k){s.hidden=k!==n});res.hidden=n<T;bar.style.transform="scaleX("+Math.min(n,T)/T+")";cn.textContent=n<T?z.dataset.step.replace("{n}",n+1).replace("{t}",T):"";bk.hidden=n===0||n>=T;
+if(n>=T){var L=[];$$("[data-if]",res).forEach(function(li){var c=li.dataset.if.split(":");li.hidden=String(ans[c[0]])!==c[1]});st.forEach(function(s){var c=s.querySelector("input:checked");if(c)L.push(s.querySelector("legend").textContent+" "+c.nextElementSibling.textContent)});var h=res.querySelector("[name=answers]");if(h)h.value=L.join("\n");goal("quiz")}
+if(focus){var t=n<T?st[n].querySelector("input"):res.querySelector("h3");if(t){if(n>=T)t.setAttribute("tabindex","-1");t.focus({preventScroll:true})}}}
+function pick(r,kb){ans[r.name]=+r.value;setTimeout(function(){if(i<T&&st[i].contains(r))show(i+1,kb)},kb?0:280)}
+z.addEventListener("click",function(ev){var l=ev.target.closest(".opt");if(!l||ev.detail===0)return;var r=l.querySelector("input");setTimeout(function(){if(r.checked)pick(r,false)},0)});
+z.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&ev.target.type==="radio"){ev.preventDefault();ev.target.checked=true;pick(ev.target,true)}});
+bk.addEventListener("click",function(){if(i>0)show(i-1,true)});
+z.querySelector(".quiz-restart").addEventListener("click",function(){ans={};$$("input[type=radio]",z).forEach(function(r){r.checked=false});show(0,true)});
+show(0,false)});
+/* helper */
+var H=document.querySelector(".hlp");if(H){var hb=H.querySelector(".hlp-btn"),hp=H.querySelector(".hlp-p"),lg=H.querySelector(".hlp-log");
+function op(o){hp.hidden=!o;hb.setAttribute("aria-expanded",String(o));H.classList.toggle("open",o);if(o){goal("helper");var f=hp.querySelector(".hq")||hp.querySelector(".btn");f&&f.focus({preventScroll:true})}else hb.focus()}
+hb.addEventListener("click",function(){op(hp.hidden)});H.querySelector(".hlp-x").addEventListener("click",function(){op(false)});
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&!hp.hidden)op(false)});
+H.querySelector(".hlp-qs").addEventListener("click",function(ev){var q=ev.target.closest(".hq");if(!q)return;var m=document.createElement("p");m.className="bub me";m.textContent=q.textContent;lg.appendChild(m);
+var t=document.createElement("p");t.className="bub typing";t.innerHTML="<i></i><i></i><i></i>";lg.appendChild(t);var nx=q.nextElementSibling||q.previousElementSibling;q.remove();if(nx)nx.focus({preventScroll:true});lg.scrollTop=lg.scrollHeight;
+setTimeout(function(){t.className="bub";t.textContent=q.dataset.a;lg.scrollTop=lg.scrollHeight;if(!H.querySelector(".hq"))H.querySelector(".hlp-more").hidden=false},RM?0:700)})}
+/* blog search */
+var bs=document.querySelector(".bsearch input");if(bs){var cards=$$(".posts a.card"),bc=document.querySelector(".bcount"),bn=document.querySelector(".bnone"),nz=function(s){return s.toLowerCase().replace(/[‘’ʻʼ`']/g,"'")};
+cards.forEach(function(c){c.dataset.s=nz(c.textContent)});
+bs.addEventListener("input",function(){var q=nz(bs.value.trim()),n=0;cards.forEach(function(c){var y=!q||c.dataset.s.indexOf(q)>-1;c.hidden=!y;if(y)n++});bc.textContent=q?bs.dataset.found.replace("{n}",n):"";bn.hidden=n>0})}
 })();</script></body></html>
