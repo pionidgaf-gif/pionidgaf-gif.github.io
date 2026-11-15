@@ -415,11 +415,12 @@ html:not(.js) .quiz-sec{display:none}
 @keyframes vt-in{from{opacity:0;transform:translateY(22px)}}
 
 /* ---------- дом на странице застройщиков ---------- */
-.bld{position:fixed;right:max(0px,calc((100vw - 1120px)/2 - 330px));bottom:0;height:min(86vh,760px);aspect-ratio:420/760;z-index:0;pointer-events:none;opacity:.95}
+.bld{--bh:min(560px,calc(100vh - 110px));position:fixed;left:20px;bottom:20px;height:var(--bh);aspect-ratio:420/790;box-sizing:border-box;z-index:20;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:40px 10px 8px;box-shadow:var(--shadow)}
 .has-bld main,.has-bld footer{position:relative;z-index:1}
+@media (min-width:1100px){.has-bld main,.has-bld footer{padding-left:calc(var(--bh,560px) * .532 + 40px)}.has-bld{--bh:min(560px,calc(100vh - 110px))}}
 .bld svg{width:100%;height:100%;overflow:visible}
 .bld svg *{vector-effect:non-scaling-stroke}
-.bld path,.bld rect,.bld circle{fill:none;stroke:var(--saf);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.bld path,.bld rect,.bld circle{fill:none;stroke:var(--saf);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .bld .ground{stroke:var(--muted);stroke-width:1.2}
 .bld .pit,.bld .dig{stroke:var(--muted);stroke-dasharray:4 5;transition:opacity .8s}
 .bld .pitg{opacity:var(--pit,1);transition:opacity .6s}
@@ -427,7 +428,7 @@ html:not(.js) .quiz-sec{display:none}
 .bld .fl.on{opacity:1;transform:none}
 .bld .slab{fill:transparent;transition:fill 1s}
 .bld.fac .slab{fill:var(--card)}
-.bld .col{stroke:var(--line)}.bld.fac .col{opacity:0}
+.bld .col{stroke:var(--muted)}.bld.fac .col{opacity:0}
 .bld .wr{opacity:0;transition:opacity .6s,fill .8s}
 .bld.fac .wr{opacity:1;fill:var(--bg)}
 .bld .w.lit .wr{fill:#f3d58b}
@@ -444,7 +445,7 @@ html:not(.js) .quiz-sec{display:none}
 .bld .tree,.bld .lamp{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:bottom;transition:opacity .8s,transform .8s}
 .bld.green .tree,.bld.green .lamp{opacity:1;transform:none}
 .bld .tree circle{fill:color-mix(in srgb,var(--saf) 18%,transparent)}
-.bld-st{position:absolute;left:4%;top:12%;margin:0;white-space:nowrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 10px;border:1px solid var(--line);border-radius:99px}
+.bld-st{position:absolute;left:50%;top:10px;transform:translateX(-50%);margin:0;white-space:nowrap;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);padding:4px 10px;border:1px solid var(--line);border-radius:99px}
 
 .bld .exc .arm{animation:dig 2.6s ease-in-out infinite;transform-origin:138px 716px;transform-box:view-box}
 @keyframes dig{50%{transform:rotate(-12deg)}}
@@ -467,8 +468,7 @@ html:not(.js) .quiz-sec{display:none}
 @keyframes walk{to{transform:translateX(18px)}}
 .bld.sold .roof rect{fill:var(--saf);transition:fill 1s}
 .bld.sold .bld-st,.bld-st.sold{color:var(--saf);border-color:var(--saf)}
-@media (max-width:1500px){.bld{right:-40px;opacity:.5}}
-@media (max-width:860px){.bld{right:auto;left:10px;bottom:calc(84px + env(safe-area-inset-bottom));height:104px;opacity:1;z-index:5;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 4px 2px;box-shadow:var(--shadow)}.bld-st{display:none}.bld .tree,.bld .lamp,.bld .car,.bld .folk,.bld .exc{display:none}}
+@media (max-width:1099px){.bld{left:10px;bottom:calc(84px + env(safe-area-inset-bottom));height:150px;border-radius:14px;padding:8px 4px 2px}.bld-st{display:none}.bld .tree,.bld .lamp,.bld .car,.bld .folk,.bld .exc{display:none}}
 
 /* ---------- сцены работы команды на главной ---------- */
 main.idx>section{position:relative}
