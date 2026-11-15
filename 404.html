@@ -395,6 +395,15 @@ html:not(.js) .quiz-sec{display:none}
 @media (min-width:861px) and (max-width:1420px){.logo span{display:none}.nav{gap:16px}}
 .post h2{font-size:clamp(25px,3.2vw,31px);margin-top:1.7em}.post h3{font-size:19px;margin-top:1.4em}
 .post-grid>.post{width:100%;min-width:0;max-width:740px}
+
+/* photos */
+.pic{margin:0}.pic img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:14px;background:#e9e4da}
+.pic figcaption{font-size:13px;line-height:1.35;margin-top:8px;opacity:.75}
+.photos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.re-band{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+.re-pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}.re-pics .pic:nth-child(2){margin-top:40px}
+@media (max-width:860px){.re-band{grid-template-columns:1fr;gap:24px}}
+@media (max-width:700px){.photos{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:70%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.photos .pic{scroll-snap-align:start}}
 </style></head><body><main class="wrap hero"><p class="eyebrow">404</p><h1>Sahifa topilmadi</h1>
 <p class="lead">Havola eskirgan yoki manzilda xato bor. Страница не найдена: ссылка устарела или в адресе ошибка.</p>
 <div class="cta"><a class="btn" href="/">Bosh sahifa</a><a class="btn ghost" href="/ru/">Главная</a><a class="btn ghost" href="tel:+998919993331">+998 91 999-33-31</a></div></main>
