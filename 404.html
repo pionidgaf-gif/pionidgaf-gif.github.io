@@ -447,6 +447,13 @@ a.partner:hover{border-color:var(--saf)}
 .kcase h3{color:#fff;font-size:26px;margin:4px 0 8px}.kcase p{color:#d8d3c8}
 @media (max-width:700px){.rgrid{grid-template-columns:1fr 1fr;gap:10px}.kcase{grid-template-columns:1fr}.kcase img{max-width:300px}}
 
+/* 16.11.2026 Элбек: без цифр над блоками */
+main.idx>section>h2:first-child::before,main.idx>section>div:first-child>h2:first-child::before,main.idx .quiz-head h2::before{content:none!important;display:none!important}
+.steps li::before{content:none!important;display:none!important}
+.steps li{padding-left:18px!important}
+.usp-n,.chap-n{display:none!important}
+.chap{grid-template-columns:1fr!important}
+
 /* ---------- переход между страницами ---------- */
 @view-transition{navigation:auto}
 ::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
