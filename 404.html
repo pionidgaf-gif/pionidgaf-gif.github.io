@@ -454,6 +454,16 @@ main.idx>section>h2:first-child::before,main.idx>section>div:first-child>h2:firs
 .usp-n,.chap-n{display:none!important}
 .chap{grid-template-columns:1fr!important}
 
+/* 17.11.2026 главная = застройщики: компактнее на телефоне */
+@media (max-width:640px){
+ .hero .cta .btn.ghost{display:none}
+ .devs{grid-template-columns:1fr 1fr!important;gap:8px}
+ .devs li{padding:10px 12px}
+ .devs span{font-size:.78rem}
+ .other-brands .more-brands summary{font-size:1.15rem;padding:14px 0}
+}
+.other-brands .more-brands summary{font-family:Forum,Georgia,serif;font-size:1.4rem}
+
 /* ---------- переход между страницами ---------- */
 @view-transition{navigation:auto}
 ::view-transition-old(root){animation:vt-out .32s cubic-bezier(.4,0,1,1) both}
