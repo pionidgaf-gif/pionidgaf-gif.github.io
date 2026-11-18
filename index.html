@@ -600,7 +600,7 @@ html.js .scene.in *{stroke-dashoffset:0}
 .cine-hint{font-size:13px;color:rgba(255,255,255,.7)}
 .cine:not(.live) .cine-bar{display:none}
 @media (max-width:640px){
- .cine.live{height:440vh}
+ .cine.live{height:330vh}
  .cine-txt{top:88px}
  .cine h1{font-size:clamp(36px,11vw,52px)}
  .cine .lead{font-size:15px}
@@ -630,6 +630,13 @@ html body{overflow-x:clip}
  .cine-bar{bottom:96px}
  .cine-ch{bottom:132px}
  .cine-num{bottom:132px}
+}
+
+/* телефон: фиксированная высота сцены, без прыжков от адресной строки */
+@media (pointer:coarse){
+ .cine-imgs .cf{will-change:opacity}
+ .cine-ch,.cine-ch *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+ .cine-ch{background:rgba(12,11,9,.78)}
 }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Quruvchilarga", "description": "Farg‘ona vodiysidagi turar joy majmualari uchun marketing va sotuv bo‘limi: Reels, Instagram reklamasi, menejerlar, CRM. Oyiga 12,5 mln so‘mdan + foiz.", "provider": {"@id": "https://musaevmarketing.uz/#org"}, "areaServed": [{"@type": "City", "name": "Fergana"}, {"@type": "City", "name": "Margilan"}, {"@type": "City", "name": "Kokand"}, {"@type": "City", "name": "Namangan"}, {"@type": "City", "name": "Andijan"}, {"@type": "City", "name": "Kuvasay"}], "offers": {"@type": "Offer", "description": "Oyiga 12,5 mln so‘mdan belgilangan to‘lov va sotilgan xonadonlardan foiz. Sotuv menejerlari maoshi bizdan, reklama byudjeti sizdan."}}</script>

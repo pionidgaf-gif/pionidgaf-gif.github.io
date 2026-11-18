@@ -4,6 +4,9 @@
   var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (RM || !window.gsap || !window.ScrollTrigger) { S.classList.add('static'); return; }
   gsap.registerPlugin(ScrollTrigger);
+  var TOUCH = matchMedia('(pointer: coarse)').matches;
+  /* iPhone: адресная строка прячется при свайпе — не пересчитывать сцену рывком */
+  ScrollTrigger.config({ ignoreMobileResize: true });
   S.classList.add('live');
 
   /* плавная прокрутка только мышью; на телефоне родная инерция */
@@ -28,7 +31,7 @@
   var tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: {
-      trigger: S, start: 'top top', end: 'bottom bottom', scrub: 0.6,
+      trigger: S, start: 'top top', end: 'bottom bottom', scrub: TOUCH ? true : 0.6,
       onUpdate: function (self) {
         var p = self.progress, k = Math.min(N - 1, Math.round(p / 0.8 * (N - 1)));
         st.forEach(function (li, i) { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); });
@@ -39,12 +42,12 @@
   /* 0–0.8: кадры стройки; заголовок уходит вверх в первой четверти */
   tl.to(txt, { autoAlpha: 0, y: -60, duration: 0.08 }, 0.01);
   tl.to(hint, { autoAlpha: 0, duration: 0.05 }, 0.02);
-  tl.fromTo(imgs[0], { scale: 1.12 }, { scale: 1, duration: 0.8 }, 0);
+  if (!TOUCH) tl.fromTo(imgs[0], { scale: 1.12 }, { scale: 1, duration: 0.8 }, 0);
   var step = 0.8 / (N - 1);
   imgs.forEach(function (im, i) {
     if (!i) return;
     tl.to(im, { autoAlpha: 1, duration: step * 0.6 }, step * (i - 1) + step * 0.4);
-    tl.fromTo(im, { scale: 1.06 }, { scale: 1, duration: step * 1.2 }, step * (i - 1) + step * 0.4);
+    if (!TOUCH) tl.fromTo(im, { scale: 1.06 }, { scale: 1, duration: step * 1.2 }, step * (i - 1) + step * 0.4);
   });
   /* главы: каждая стадия рассказывает, что мы делаем */
   gsap.utils.toArray('.cine-ch').forEach(function (ch) {
