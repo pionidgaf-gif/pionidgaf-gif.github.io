@@ -25,35 +25,43 @@
   var imgs = gsap.utils.toArray('.cine .cf'), N = imgs.length;
   var st = gsap.utils.toArray('.cine-st li'), prog = S.querySelector('.cine-prog i');
   var txt = S.querySelector('.cine-txt'), num = S.querySelector('.cine-num'), hint = S.querySelector('.cine-hint');
-  gsap.set(imgs.slice(1), { autoAlpha: 0 });
+  /* кадры сняты с одной точки: стадии стройки проявляются снизу вверх, как растёт дом;
+     вечер и ночь — мягкая смена света */
+  var WIPE = 5; /* кадры 2..5 — стройка, дальше свет */
   gsap.set(num, { autoAlpha: 0, y: 40 });
+  imgs.forEach(function (im, i) {
+    if (!i) return;
+    if (i < WIPE) gsap.set(im, { '--wp': '-12%' }); else gsap.set(im, { autoAlpha: 0 });
+  });
+  S.classList.add('wipe');
 
   var tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: {
       trigger: S, start: 'top top', end: 'bottom bottom', scrub: TOUCH ? true : 0.35,
       onUpdate: function (self) {
-        var p = self.progress; S.classList.toggle('past', p > 0.06); var k = Math.min(N - 1, Math.round(p / 0.8 * (N - 1)));
+        var p = self.progress; S.classList.toggle('past', p > 0.06);
+        var k = Math.min(N - 1, Math.round(p / 0.8 * (N - 1)));
         st.forEach(function (li, i) { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); });
         if (prog) prog.style.transform = 'scaleX(' + p.toFixed(3) + ')';
       }
     }
   });
-  /* 0–0.8: кадры стройки; заголовок уходит вверх в первой четверти */
   tl.to(txt, { autoAlpha: 0, y: -60, duration: 0.08 }, 0.01);
   tl.to(hint, { autoAlpha: 0, duration: 0.05 }, 0.02);
-  if (!TOUCH) tl.fromTo(imgs[0], { scale: 1.12 }, { scale: 1, duration: 0.8 }, 0);
+  if (!TOUCH) tl.fromTo(S.querySelector('.cine-imgs'), { scale: 1.06 }, { scale: 1, duration: 0.9 }, 0);
   var step = 0.8 / (N - 1);
   imgs.forEach(function (im, i) {
     if (!i) return;
-    tl.to(im, { autoAlpha: 1, duration: step * 0.6 }, step * (i - 1) + step * 0.4);
-    if (!TOUCH) tl.fromTo(im, { scale: 1.06 }, { scale: 1, duration: step * 1.2 }, step * (i - 1) + step * 0.4);
+    var at = step * (i - 1) + step * 0.25;
+    if (i < WIPE) tl.to(im, { '--wp': '112%', duration: step * 0.75, ease: 'power1.inOut' }, at);
+    else tl.to(im, { autoAlpha: 1, duration: step * 0.7 }, at);
   });
   /* главы: каждая стадия рассказывает, что мы делаем */
   gsap.utils.toArray('.cine-ch').forEach(function (ch) {
-    var i = +ch.dataset.i, tin = Math.max(0.1, step * (i - 1) + step * 0.45), tout = step * i + step * 0.3;
+    var i = +ch.dataset.i, tin = Math.max(0.1, step * (i - 1) + step * 0.45), tout = step * i + step * 0.12;
     tl.fromTo(ch, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: step * 0.3 }, tin);
-    tl.to(ch, { autoAlpha: 0, y: -30, duration: step * 0.25 }, tout);
+    tl.to(ch, { autoAlpha: 0, y: -20, duration: step * 0.2 }, tout);
   });
   /* ночь: цифры кейса */
   tl.to(num, { autoAlpha: 1, y: 0, duration: 0.1 }, step * (N - 2) + step * 0.75);

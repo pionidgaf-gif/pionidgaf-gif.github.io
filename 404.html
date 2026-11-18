@@ -634,6 +634,10 @@ html body{overflow-x:clip}
 .cine.live.past .cine-go{opacity:1;visibility:visible}
 .cine:not(.live) .cine-go{display:none}
 @media (max-width:768px){.cine-go{display:none}}
+/* 18.11 смена кадров: стройка проявляется снизу вверх мягкой кромкой */
+.cine.wipe .cf:nth-child(n+2):nth-child(-n+5){--wp:-12%;-webkit-mask-image:linear-gradient(to top,#000 var(--wp),transparent calc(var(--wp) + 12%));mask-image:linear-gradient(to top,#000 var(--wp),transparent calc(var(--wp) + 12%));will-change:auto}
+.cine-imgs{transform-origin:50% 60%;will-change:transform}
+.cine-imgs .cf{will-change:auto}
 </style></head><body><main class="wrap hero"><p class="eyebrow">404</p><h1>Sahifa topilmadi</h1>
 <p class="lead">Havola eskirgan yoki manzilda xato bor. Страница не найдена: ссылка устарела или в адресе ошибка.</p>
 <div class="cta"><a class="btn" href="/">Bosh sahifa</a><a class="btn ghost" href="/ru/">Главная</a><a class="btn ghost" href="tel:+998919993331">+998 91 999-33-31</a></div></main>
