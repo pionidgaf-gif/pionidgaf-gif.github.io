@@ -37,7 +37,7 @@
     }
   });
   /* 0–0.8: кадры стройки; заголовок уходит вверх в первой четверти */
-  tl.to(txt, { autoAlpha: 0, y: -60, duration: 0.1 }, 0.01);
+  tl.to(txt, { autoAlpha: 0, y: -60, duration: 0.08 }, 0.01);
   tl.to(hint, { autoAlpha: 0, duration: 0.05 }, 0.02);
   tl.fromTo(imgs[0], { scale: 1.12 }, { scale: 1, duration: 0.8 }, 0);
   var step = 0.8 / (N - 1);
@@ -46,8 +46,14 @@
     tl.to(im, { autoAlpha: 1, duration: step * 0.6 }, step * (i - 1) + step * 0.4);
     tl.fromTo(im, { scale: 1.06 }, { scale: 1, duration: step * 1.2 }, step * (i - 1) + step * 0.4);
   });
-  /* 0.8–1: дом готов, ночь, цифры кейса */
-  tl.to(num, { autoAlpha: 1, y: 0, duration: 0.12 }, 0.82);
+  /* главы: каждая стадия рассказывает, что мы делаем */
+  gsap.utils.toArray('.cine-ch').forEach(function (ch) {
+    var i = +ch.dataset.i, tin = Math.max(0.1, step * (i - 1) + step * 0.45), tout = step * i + step * 0.3;
+    tl.fromTo(ch, { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: step * 0.3 }, tin);
+    tl.to(ch, { autoAlpha: 0, y: -30, duration: step * 0.25 }, tout);
+  });
+  /* ночь: цифры кейса */
+  tl.to(num, { autoAlpha: 1, y: 0, duration: 0.1 }, step * (N - 2) + step * 0.75);
   tl.to({}, { duration: 0.06 });
 
   /* картинки догрузились — пересчитать */

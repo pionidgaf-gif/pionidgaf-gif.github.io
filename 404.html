@@ -604,6 +604,23 @@ html.js .scene.in *{stroke-dashoffset:0}
 }
 
 html body{overflow-x:clip}
+
+/* главы на стадиях стройки: человек читает, пока дом растёт */
+.cine-chs{position:absolute;left:0;right:0;top:0;bottom:0;margin:0 auto;pointer-events:none}
+.cine-ch{position:absolute;left:16px;top:50%;transform:translateY(-50%);max-width:520px;padding:28px 30px;border-radius:20px;background:rgba(12,11,9,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);opacity:0;visibility:hidden}
+.cine-ch h2{font-family:Forum,Georgia,serif;font-weight:400;font-size:clamp(34px,4vw,60px);line-height:1;margin:.2em 0 .35em;color:#fff}
+.cine-ch p:not(.eyebrow){margin:0;font-size:clamp(15px,1.2vw,18px);line-height:1.6;color:rgba(255,255,255,.88)}
+.cine:not(.live) .cine-chs{display:none}
+@media (max-width:640px){
+ .cine-ch{left:12px;right:12px;top:auto;bottom:70px;transform:none;padding:18px 18px;max-width:none}
+ .cine-ch h2{font-size:32px}
+ .cine-ch p:not(.eyebrow){font-size:14.5px}
+}
+@media (max-width:640px){
+ .cine-bar{bottom:96px}
+ .cine-ch{bottom:132px}
+ .cine-num{bottom:132px}
+}
 </style></head><body><main class="wrap hero"><p class="eyebrow">404</p><h1>Sahifa topilmadi</h1>
 <p class="lead">Havola eskirgan yoki manzilda xato bor. Страница не найдена: ссылка устарела или в адресе ошибка.</p>
 <div class="cta"><a class="btn" href="/">Bosh sahifa</a><a class="btn ghost" href="/ru/">Главная</a><a class="btn ghost" href="tel:+998919993331">+998 91 999-33-31</a></div></main>
