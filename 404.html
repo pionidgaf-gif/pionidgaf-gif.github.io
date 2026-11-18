@@ -563,7 +563,7 @@ html.js .scene.in *{stroke-dashoffset:0}
 
 /* ===== 18.11.2026 Первый экран: дом растёт при прокрутке (cine.js) ===== */
 .cine{position:relative;height:100svh;background:#0e0d0b;color:#fff;margin:0!important;max-width:none!important;border-radius:0!important;padding:0!important;border:0!important}
-.cine.live{height:520vh}
+.cine.live{height:300vh}
 .cine-pin{position:sticky!important;top:var(--hdr,64px);height:calc(100svh - var(--hdr,64px));overflow:hidden}
 .cine-imgs,.cine-imgs .cf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cine-imgs .cf{will-change:opacity,transform}
@@ -590,7 +590,7 @@ html.js .scene.in *{stroke-dashoffset:0}
 .cine-hint{font-size:13px;color:rgba(255,255,255,.7)}
 .cine:not(.live) .cine-bar{display:none}
 @media (max-width:640px){
- .cine.live{height:330vh}
+ .cine.live{height:270vh}
  .cine-txt{top:88px}
  .cine h1{font-size:clamp(36px,11vw,52px)}
  .cine .lead{font-size:15px}
@@ -628,6 +628,12 @@ html body{overflow-x:clip}
  .cine-ch,.cine-ch *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
  .cine-ch{background:rgba(12,11,9,.78)}
 }
+
+/* 18.11 кнопка заявки видна всю сцену (компьютер) */
+.cine-go{position:absolute;right:max(16px,calc((100vw - 1120px)/2 + 16px));bottom:96px;z-index:3;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.cine.live.past .cine-go{opacity:1;visibility:visible}
+.cine:not(.live) .cine-go{display:none}
+@media (max-width:768px){.cine-go{display:none}}
 </style></head><body><main class="wrap hero"><p class="eyebrow">404</p><h1>Sahifa topilmadi</h1>
 <p class="lead">Havola eskirgan yoki manzilda xato bor. Страница не найдена: ссылка устарела или в адресе ошибка.</p>
 <div class="cta"><a class="btn" href="/">Bosh sahifa</a><a class="btn ghost" href="/ru/">Главная</a><a class="btn ghost" href="tel:+998919993331">+998 91 999-33-31</a></div></main>

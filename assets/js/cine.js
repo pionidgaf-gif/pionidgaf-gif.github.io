@@ -31,9 +31,9 @@
   var tl = gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: {
-      trigger: S, start: 'top top', end: 'bottom bottom', scrub: TOUCH ? true : 0.6,
+      trigger: S, start: 'top top', end: 'bottom bottom', scrub: TOUCH ? true : 0.35,
       onUpdate: function (self) {
-        var p = self.progress, k = Math.min(N - 1, Math.round(p / 0.8 * (N - 1)));
+        var p = self.progress; S.classList.toggle('past', p > 0.06); var k = Math.min(N - 1, Math.round(p / 0.8 * (N - 1)));
         st.forEach(function (li, i) { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); });
         if (prog) prog.style.transform = 'scaleX(' + p.toFixed(3) + ')';
       }
