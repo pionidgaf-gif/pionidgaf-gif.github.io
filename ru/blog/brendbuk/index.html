@@ -570,6 +570,50 @@ html.js .scene.in *{stroke-dashoffset:0}
  html.js .scene *{stroke-dashoffset:0}
 }
 @media print{.bld,.scene{display:none}}
+
+/* ===== 18.11.2026 Первый экран: дом растёт при прокрутке (cine.js) ===== */
+.cine{position:relative;height:100svh;background:#0e0d0b;color:#fff;margin:0!important;max-width:none!important;border-radius:0!important;padding:0!important;border:0!important}
+.cine.live{height:520vh}
+.cine-pin{position:sticky!important;top:var(--hdr,64px);height:calc(100svh - var(--hdr,64px));overflow:hidden}
+.cine-imgs,.cine-imgs .cf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cine-imgs .cf{will-change:opacity,transform}
+.cine:not(.live) .cf:not(:first-child){display:none}
+.cine-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,7,.55) 0%,rgba(10,9,7,.15) 38%,rgba(10,9,7,.25) 62%,rgba(10,9,7,.78) 100%)}
+.cine-txt,.cine-num{position:absolute;left:0;right:0;margin:0 auto}
+.cine-txt{top:clamp(90px,16vh,170px)}
+.cine .eyebrow{color:#f0d79a;letter-spacing:.18em}
+.cine h1{font-family:Forum,Georgia,serif;font-weight:400;font-size:clamp(42px,7.4vw,124px);line-height:.98;letter-spacing:-.01em;max-width:14ch;margin:.25em 0 .35em;color:#fff;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.cine .lead{max-width:46ch;font-size:clamp(16px,1.35vw,20px);line-height:1.6;color:rgba(255,255,255,.88)}
+.cine .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.cine .btn.ghost{color:#fff;border-color:rgba(255,255,255,.55);background:transparent}
+.cine-num{bottom:clamp(110px,18vh,190px)}
+.cine .css{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,3vw,48px);margin:10px 0 14px}
+.cine .cs b{display:block;white-space:nowrap;font-family:Forum,Georgia,serif;font-weight:400;font-size:clamp(28px,3.6vw,64px);line-height:1;color:#fff}
+.cine .cs span{display:block;margin-top:8px;font-size:14px;line-height:1.4;color:rgba(255,255,255,.78)}
+.cine .small{color:rgba(255,255,255,.65)}
+.cine:not(.live) .cine-num{display:none}
+.cine-bar{position:absolute;left:0;right:0;bottom:22px;margin:0 auto;display:grid;gap:10px}
+.cine-st{list-style:none;margin:0;padding:0;display:flex;gap:6px 18px;flex-wrap:wrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.cine-st li{transition:color .3s}.cine-st li.done{color:rgba(255,255,255,.7)}.cine-st li.on{color:#f0d79a}
+.cine-prog{display:block;height:2px;background:rgba(255,255,255,.18);overflow:hidden}
+.cine-prog i{display:block;height:100%;background:#f0d79a;transform:scaleX(0);transform-origin:left}
+.cine-hint{font-size:13px;color:rgba(255,255,255,.7)}
+.cine:not(.live) .cine-bar{display:none}
+@media (max-width:640px){
+ .cine.live{height:440vh}
+ .cine-txt{top:88px}
+ .cine h1{font-size:clamp(36px,11vw,52px)}
+ .cine .lead{font-size:15px}
+ .cine .cta .btn.ghost{display:none}
+ .cine .css{grid-template-columns:1fr;gap:14px}
+ .cine .cs{display:flex;align-items:baseline;gap:12px}
+ .cine .cs b{font-size:34px;white-space:nowrap}
+ .cine .cs span{margin:0;font-size:13px}
+ .cine-num{bottom:96px}
+ .cine-st li:not(.on){display:none}
+}
+
+html body{overflow-x:clip}
 </style><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Брендбук: что в нём должно быть и как сделать, чтобы его открывали", "description": "Брендбук для бизнеса в Узбекистане: какие разделы нужны, сколько страниц достаточно, чем он отличается от гайдлайна и почему большие PDF никто не читает.", "datePublished": "2026-11-11", "dateModified": "2026-11-14", "inLanguage": "ru", "mainEntityOfPage": "https://musaevmarketing.uz/ru/blog/brendbuk/", "author": {"@type": "Person", "name": "Elbek Musaev"}, "publisher": {"@id": "https://musaevmarketing.uz/#org"}, "about": "брендбук"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Musaev Marketing", "item": "https://musaevmarketing.uz/ru/"}, {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://musaevmarketing.uz/ru/blog/"}, {"@type": "ListItem", "position": 3, "name": "Брендбук: что в нём должно быть и как сделать, чтобы его открывали", "item": "https://musaevmarketing.uz/ru/blog/brendbuk/"}]}]</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3P5LFZ0QL"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-T3P5LFZ0QL");</script></head><body><header class="top"><div class="wrap bar"><a class="logo" href="/ru/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/ru/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav><a class="btn sm hcta" href="/ru/#contact">Бесплатная проверка</a><div class="langs"><a href="/blog/">UZ</a><a href="/ru/blog/" aria-current=page>RU</a><a href="/en/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/ru/">Застройщикам</a><a href="/ru/smm/">SMM</a><a href="/ru/#cases">Проекты</a><a href="/ru/#prices">Цены</a><a href="/ru/istoriya/">О нас</a><a href="/ru/blog/" aria-current=page>Блог</a><a href="/ru/#contact">Контакты</a></nav></details></div></header><div class="progress" aria-hidden="true"><span></span></div><main class="wrap"><div class="post-grid"><article class="post"><p class="crumbs"><a href="/ru/">Musaev Marketing</a> / <a href="/ru/blog/">Блог</a></p><h1>Брендбук: что в нём должно быть и как сделать, чтобы его открывали</h1><p class="meta"><span>Элбек Мусаев, основатель Musaev Marketing</span><span>2026-11-14</span><span>4 мин чтения</span><a href="https://t.me/share/url?url=https%3A//musaevmarketing.uz/ru/blog/brendbuk/&amp;text=%D0%91%D1%80%D0%B5%D0%BD%D0%B4%D0%B1%D1%83%D0%BA%3A%20%D1%87%D1%82%D0%BE%20%D0%B2%20%D0%BD%D1%91%D0%BC%20%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%BE%20%D0%B1%D1%8B%D1%82%D1%8C%20%D0%B8%20%D0%BA%D0%B0%D0%BA%20%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C%2C%20%D1%87%D1%82%D0%BE%D0%B1%D1%8B%20%D0%B5%D0%B3%D0%BE%20%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D0%B2%D0%B0%D0%BB%D0%B8" target="_blank" rel="noopener">Поделиться в Telegram</a></p><details class="toc-m"><summary>Содержание</summary><ol><li><a href="#s1">Что такое брендбук</a></li><li><a href="#s2">Что входит в брендбук</a></li><li><a href="#s3">Почему брендбуки лежат без дела</a></li><li><a href="#s4">Как сделать брендбук, которым пользуются</a></li><li><a href="#s5">Когда брендбук действительно нужен</a></li><li><a href="#s6">Частые вопросы</a></li></ol></details><p>«Подскажите, какой у вас фирменный цвет?» Такой вопрос новый SMM-специалист пишет в рабочий чат в первую же неделю. В ответ ему присылают скриншот логотипа, хотя где-то на почте директора лежит брендбук на восемьдесят страниц, оплаченный два года назад. Его показали на одном совещании и больше не открывали.</p>
 <p>Брендбук пишут для того, чтобы люди, которые работают с брендом, перестали задавать такие вопросы. Если их задают, документ не справился, сколько бы он ни стоил.</p>

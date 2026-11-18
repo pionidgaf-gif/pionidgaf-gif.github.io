@@ -570,6 +570,50 @@ html.js .scene.in *{stroke-dashoffset:0}
  html.js .scene *{stroke-dashoffset:0}
 }
 @media print{.bld,.scene{display:none}}
+
+/* ===== 18.11.2026 Первый экран: дом растёт при прокрутке (cine.js) ===== */
+.cine{position:relative;height:100svh;background:#0e0d0b;color:#fff;margin:0!important;max-width:none!important;border-radius:0!important;padding:0!important;border:0!important}
+.cine.live{height:520vh}
+.cine-pin{position:sticky!important;top:var(--hdr,64px);height:calc(100svh - var(--hdr,64px));overflow:hidden}
+.cine-imgs,.cine-imgs .cf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cine-imgs .cf{will-change:opacity,transform}
+.cine:not(.live) .cf:not(:first-child){display:none}
+.cine-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,9,7,.55) 0%,rgba(10,9,7,.15) 38%,rgba(10,9,7,.25) 62%,rgba(10,9,7,.78) 100%)}
+.cine-txt,.cine-num{position:absolute;left:0;right:0;margin:0 auto}
+.cine-txt{top:clamp(90px,16vh,170px)}
+.cine .eyebrow{color:#f0d79a;letter-spacing:.18em}
+.cine h1{font-family:Forum,Georgia,serif;font-weight:400;font-size:clamp(42px,7.4vw,124px);line-height:.98;letter-spacing:-.01em;max-width:14ch;margin:.25em 0 .35em;color:#fff;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.cine .lead{max-width:46ch;font-size:clamp(16px,1.35vw,20px);line-height:1.6;color:rgba(255,255,255,.88)}
+.cine .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.cine .btn.ghost{color:#fff;border-color:rgba(255,255,255,.55);background:transparent}
+.cine-num{bottom:clamp(110px,18vh,190px)}
+.cine .css{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,3vw,48px);margin:10px 0 14px}
+.cine .cs b{display:block;white-space:nowrap;font-family:Forum,Georgia,serif;font-weight:400;font-size:clamp(28px,3.6vw,64px);line-height:1;color:#fff}
+.cine .cs span{display:block;margin-top:8px;font-size:14px;line-height:1.4;color:rgba(255,255,255,.78)}
+.cine .small{color:rgba(255,255,255,.65)}
+.cine:not(.live) .cine-num{display:none}
+.cine-bar{position:absolute;left:0;right:0;bottom:22px;margin:0 auto;display:grid;gap:10px}
+.cine-st{list-style:none;margin:0;padding:0;display:flex;gap:6px 18px;flex-wrap:wrap;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.cine-st li{transition:color .3s}.cine-st li.done{color:rgba(255,255,255,.7)}.cine-st li.on{color:#f0d79a}
+.cine-prog{display:block;height:2px;background:rgba(255,255,255,.18);overflow:hidden}
+.cine-prog i{display:block;height:100%;background:#f0d79a;transform:scaleX(0);transform-origin:left}
+.cine-hint{font-size:13px;color:rgba(255,255,255,.7)}
+.cine:not(.live) .cine-bar{display:none}
+@media (max-width:640px){
+ .cine.live{height:440vh}
+ .cine-txt{top:88px}
+ .cine h1{font-size:clamp(36px,11vw,52px)}
+ .cine .lead{font-size:15px}
+ .cine .cta .btn.ghost{display:none}
+ .cine .css{grid-template-columns:1fr;gap:14px}
+ .cine .cs{display:flex;align-items:baseline;gap:12px}
+ .cine .cs b{font-size:34px;white-space:nowrap}
+ .cine .cs span{margin:0;font-size:13px}
+ .cine-num{bottom:96px}
+ .cine-st li:not(.on){display:none}
+}
+
+html body{overflow-x:clip}
 </style><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Mobilografiya nima va biznesga telefonda olingan video yetarlimi", "description": "Mobilografiya nima, mobilograf videografdan nimasi bilan farq qiladi, biznesga qachon telefon yetadi va qachon kamera kerak. Farg‘onadagi agentlik tajribasidan.", "datePublished": "2026-11-09", "dateModified": "2026-11-14", "inLanguage": "uz", "mainEntityOfPage": "https://musaevmarketing.uz/blog/mobilografiya-nima/", "author": {"@type": "Person", "name": "Elbek Musaev"}, "publisher": {"@id": "https://musaevmarketing.uz/#org"}, "about": "mobilografiya nima"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Musaev Marketing", "item": "https://musaevmarketing.uz/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://musaevmarketing.uz/blog/"}, {"@type": "ListItem", "position": 3, "name": "Mobilografiya nima va biznesga telefonda olingan video yetarlimi", "item": "https://musaevmarketing.uz/blog/mobilografiya-nima/"}]}]</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3P5LFZ0QL"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-T3P5LFZ0QL");</script></head><body><header class="top"><div class="wrap bar"><a class="logo" href="/" aria-label="Musaev Marketing"><img class="lm lm-b" src="/assets/mm-mark-b.png" width="58" height="32" alt=""><img class="lm lm-w" src="/assets/mm-mark-w.png" width="58" height="32" alt=""><span>Musaev Marketing</span></a><nav class="nav" aria-label="menu"><a href="/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/" aria-current=page>Blog</a><a href="/#contact">Aloqa</a></nav><a class="btn sm hcta" href="/#contact">Bepul tekshiruv</a><div class="langs"><a href="/blog/" aria-current=page>UZ</a><a href="/ru/blog/">RU</a><a href="/en/">EN</a></div><details class="menu"><summary aria-label="Menu"><span></span></summary><nav><a href="/">Quruvchilarga</a><a href="/smm/">SMM</a><a href="/#cases">Loyihalar</a><a href="/#prices">Narxlar</a><a href="/tarix/">Biz haqimizda</a><a href="/blog/" aria-current=page>Blog</a><a href="/#contact">Aloqa</a></nav></details></div></header><div class="progress" aria-hidden="true"><span></span></div><main class="wrap"><div class="post-grid"><article class="post"><p class="crumbs"><a href="/">Musaev Marketing</a> / <a href="/blog/">Blog</a></p><h1>Mobilografiya nima va biznesga telefonda olingan video yetarlimi</h1><p class="meta"><span>Elbek Musaev, Musaev Marketing asoschisi</span><span>2026-11-14</span><span>4 daqiqa o‘qish</span><a href="https://t.me/share/url?url=https%3A//musaevmarketing.uz/blog/mobilografiya-nima/&amp;text=Mobilografiya%20nima%20va%20biznesga%20telefonda%20olingan%20video%20yetarlimi" target="_blank" rel="noopener">Telegram’da ulashish</a></p><details class="toc-m"><summary>Mundarija</summary><ol><li><a href="#s1">Mobilografiya nima: so‘zning ma’nosi</a></li><li><a href="#s2">Mobilograf va videograf</a></li><li><a href="#s3">Telefonda yaxshi video olish uchun nima kerak</a></li><li><a href="#s4">Qachon telefon yetadi, qachon kamera kerak</a></li><li><a href="#s5">Biz qanday ishlaymiz</a></li><li><a href="#s6">Ko‘p beriladigan savollar</a></li></ol></details><p>Reels uchun qimmat kamera olindi, bir oydan keyin u javonda chang bosib yotibdi. Videoni kim, nima haqida va qachon oladi, degan savol hal qilinmagan edi. Bunga javob bo‘lmasa, kamera ham, telefon ham ishlamaydi. Mobilografiya nima ekanini shu yerdan tushunish oson: telefon doim cho‘ntakda, video olishni keyinga surishga bahona qolmaydi.</p>
 <h2 id="s1">Mobilografiya nima: so‘zning ma’nosi</h2>
